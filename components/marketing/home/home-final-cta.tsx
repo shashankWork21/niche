@@ -47,7 +47,7 @@ export function HomeFinalCta() {
                 href="/register"
                 className="flex items-center justify-center gap-3"
               >
-                Generate your first idea for Free
+                Generate your first idea — Free
                 <ArrowRight
                   className="h-6 w-6 transition-transform group-hover:translate-x-1"
                   strokeWidth={3}
@@ -75,7 +75,7 @@ export function HomeFinalCta() {
               <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
                 <Check className="h-4 w-4 text-white" strokeWidth={3} />
               </div>
-              <span>5 minutes setup</span>
+              <span>7 frameworks • 5 min setup</span>
             </div>
           </div>
         </div>
