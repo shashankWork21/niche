@@ -58,7 +58,6 @@ export function UsersTable({ users }: { users: AdminUserRow[] }) {
       <Table>
         <TableHeader>
           <TableRow className="bg-linear-to-r from-blue-700 to-blue-900 border-none hover:bg-linear-to-r">
-            <TableHead className="w-10 h-9 py-2 text-blue-50 font-semibold" />
             <TableHead className="h-9 px-4 py-2 font-semibold text-blue-50">
               Name
             </TableHead>
