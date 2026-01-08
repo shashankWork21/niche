@@ -19,10 +19,12 @@ export function TopNav({
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
         <Link href="/" className="group flex items-center gap-2">
           <div className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-linear-to-r from-blue-700 to-blue-900">
-            <div className="text-sm font-bold text-white">YC</div>
+            <div className="text-sm font-bold text-white">Niche</div>
           </div>
           <div className="text-sm font-semibold tracking-tight text-slate-900">
-            Signals <span className="hidden text-slate-500 sm:inline">by SmartAlgorhythm</span>
+            <span className="hidden text-slate-500 sm:inline">
+              by SmartAlgorhythm
+            </span>
           </div>
         </Link>
 
