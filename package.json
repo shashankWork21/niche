@@ -6,6 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "build:analyze": "ANALYZE=true next build",
+    "vercel-build": "npx prisma migrate deploy && npx prisma generate && next build",
     "lint": "eslint"
   },
   "dependencies": {
