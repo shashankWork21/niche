@@ -1,0 +1,152 @@
+"use server";
+
+import { FormState } from "@/lib/types";
+import { UserGoal, UserPersona } from "@/app/generated/prisma/client";
+import { getBusinessNicheFromOpenAI } from "../utils/ai/openai/niche-request";
+import { getCareerDirectionFromOpenAi } from "../utils/ai/openai/career-request";
+
+export async function getNicheFromPersona(
+  userPersona: UserPersona
+): Promise<FormState> {
+  const goal = userPersona.goal;
+  switch (goal) {
+    case UserGoal.BUSINESS:
+      try {
+        const result = await getBusinessNicheFromOpenAI(userPersona.id, {
+          wishMoreUnderstood: userPersona.wishMoreUnderstood || "",
+          unspokenRules: userPersona.unspokenRules,
+          loseTrackOfTimeAreas: userPersona.loseTrackOfTimeAreas,
+          lovedDoingAt10: userPersona.lovedDoingAt10,
+          issuesSpokenUpAbout: userPersona.issuesSpokenUpAbout,
+          naturallyCuriousAbout: userPersona.naturallyCuriousAbout,
+          feelsLikePlay: userPersona.feelsLikePlay,
+          continuouslyLearningAbout: userPersona.continuouslyLearningAbout,
+          helpedOthersWith: userPersona.helpedOthersWith,
+          areasNeededHelp: userPersona.areasNeededHelp,
+          hereToDo: userPersona.hereToDo,
+          turningPoint: userPersona.turningPoint,
+        });
+
+        // Check if input was invalid
+        if ("isInvalidInput" in result && result.isInvalidInput) {
+          return {
+            success: false,
+            redirectTo: "/invalid-submission",
+            errors: {
+              _form: {
+                errors: [
+                  "It seems like your responses were not serious or thoughtful. Please try again with genuine answers.",
+                ],
+              },
+            },
+          };
+        }
+
+        const { nicheId, customerPersonaId } = result;
+
+        if (!nicheId || !customerPersonaId) {
+          throw new Error("Failed to generate niche or customer persona.");
+        }
+
+        return {
+          success: true,
+          errors: {},
+          redirectTo: `/niche/${nicheId}`,
+          resultParams: {
+            ids: {
+              userPersonaId: userPersona.id,
+              nicheId,
+              customerPersonaId,
+            },
+          },
+        };
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          return {
+            success: false,
+            errors: {
+              _form: {
+                errors: [error.message],
+              },
+            },
+          };
+        } else {
+          return {
+            success: false,
+            errors: {
+              _form: {
+                errors: ["An unknown error occurred."],
+              },
+            },
+          };
+        }
+      }
+
+    case UserGoal.CAREER:
+      try {
+        const result = await getCareerDirectionFromOpenAi(userPersona.id, {
+          wishMoreUnderstood: userPersona.wishMoreUnderstood || "",
+          unspokenRules: userPersona.unspokenRules,
+          loseTrackOfTimeAreas: userPersona.loseTrackOfTimeAreas,
+          lovedDoingAt10: userPersona.lovedDoingAt10,
+          issuesSpokenUpAbout: userPersona.issuesSpokenUpAbout,
+          naturallyCuriousAbout: userPersona.naturallyCuriousAbout,
+          feelsLikePlay: userPersona.feelsLikePlay,
+          continuouslyLearningAbout: userPersona.continuouslyLearningAbout,
+          helpedOthersWith: userPersona.helpedOthersWith,
+          areasNeededHelp: userPersona.areasNeededHelp,
+          hereToDo: userPersona.hereToDo,
+          turningPoint: userPersona.turningPoint,
+        });
+
+        // Check if input was invalid
+        if ("isInvalidInput" in result && result.isInvalidInput) {
+          return {
+            success: false,
+            redirectTo: "/invalid-submission",
+            errors: {
+              _form: {
+                errors: [
+                  "It seems like your responses were not serious or thoughtful. Please try again with genuine answers.",
+                ],
+              },
+            },
+          };
+        }
+
+        const { careerDirectionId } = result;
+
+        return {
+          success: true,
+          errors: {},
+          redirectTo: `/career-direction/${careerDirectionId}`,
+          resultParams: {
+            ids: {
+              userPersonaId: userPersona.id,
+              careerDirectionId: careerDirectionId || 0,
+            },
+          },
+        };
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          return {
+            success: false,
+            errors: {
+              _form: {
+                errors: [error.message],
+              },
+            },
+          };
+        } else {
+          return {
+            success: false,
+            errors: {
+              _form: {
+                errors: ["An unknown error occurred."],
+              },
+            },
+          };
+        }
+      }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "entity": "event",
+  "account_id": "acc_Qwwq3eS31q64D0",
+  "event": "payment.authorized",
+  "contains": ["payment"],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_Rvk4Ea2GWlybrg",
+        "entity": "payment",
+        "amount": 500,
+        "currency": "INR",
+        "status": "authorized",
+        "order_id": null,
+        "invoice_id": null,
+        "international": false,
+        "method": "card",
+        "amount_refunded": 0,
+        "refund_status": null,
+        "captured": false,
+        "description": "Get upto 15 searches in a quarter by paying only 699 INR",
+        "card_id": "card_Rvk4Eu1KwYNpbK",
+        "card": {
+          "id": "card_Rvk4Eu1KwYNpbK",
+          "entity": "card",
+          "name": "",
+          "last4": "0153",
+          "network": "Visa",
+          "type": "credit",
+          "issuer": "UTIB",
+          "international": false,
+          "emi": true,
+          "sub_type": "consumer",
+          "token_iin": null
+        },
+        "bank": null,
+        "wallet": null,
+        "vpa": null,
+        "email": "shashankbr21494@gmail.com",
+        "contact": "+917349172510",
+        "customer_id": "cust_Rvjy1vWYNsjeqh",
+        "token_id": "token_Rvk4FE5gafgH6u",
+        "notes": { "planId": "2", "userId": "2" },
+        "fee": null,
+        "tax": null,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": { "auth_code": "886745" },
+        "created_at": 1766643358,
+        "reward": null
+      }
+    }
+  },
+  "created_at": 1766643364
+}

@@ -1,0 +1,662 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id                Int               @id @default(autoincrement())
+  email             String            @unique
+  firstName         String
+  lastName          String
+  phone             String?           @unique
+  password          String
+  role              Role              @default(USER)
+  isEmailVerified   Boolean           @default(false)
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  tokens            Token[]
+  userPersonaId     Int?              @unique
+  userPersona       UserPersona?      @relation(fields: [userPersonaId], references: [id], onDelete: Cascade)
+  offerSuites       OfferSuite[]
+  businessRoadmaps  BusinessRoadmap[]
+  professionalSlots Slot[]            @relation("Professional to Slot mapping")
+  userSlots         Slot[]            @relation("User to slot mapping")
+  schedule          Schedule?
+  aiTokens          AiTokens[]
+
+  @@index([id])
+  @@index([email])
+  @@index([phone])
+  @@index([firstName, lastName])
+  @@index([userPersonaId])
+}
+
+model Token {
+  id               Int      @id @default(autoincrement())
+  userId           Int
+  refreshToken     String   @unique
+  createdAt        DateTime @default(now())
+  refreshExpiresAt DateTime
+  updatedAt        DateTime @updatedAt
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  scope            Scope[]
+
+  @@index([id])
+  @@index([userId])
+}
+
+model CustomerPersona {
+  id                 Int                @id @default(autoincrement())
+  minAge             Int
+  maxAge             Int
+  genders            Gender[]
+  location           String
+  annualIncome       Int
+  skills             String[]
+  interests          String[]
+  fears              String[]
+  struggles          String[]
+  goals              String[]
+  painLevel          Int?
+  urgencyLevel       UrgencyLevel?
+  awarenessStage     AwarenessStage?
+  currentSolutions   String[]
+  frustrations       String[]
+  aspirations        String[]
+  jobTitles          String[]
+  companySize        CompanySize?
+  industryVerticals  String[]
+  buyingPower        BuyingPower?
+  techSavviness      TechSavviness?
+  preferredChannels  String[]
+  contentConsumption String[]
+  educationLevel     EducationLevel?
+  familyStatus       String?
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+  userPersonaId      Int
+  nicheId            Int                @unique
+  niche              Niche              @relation(fields: [nicheId], references: [id], onDelete: Cascade)
+  userPersona        UserPersona        @relation(fields: [userPersonaId], references: [id], onDelete: Cascade)
+  timeRichAudience   Boolean?
+  moneyRichAudience  Boolean?
+  trustRichAudience  Boolean?
+  marketValidations  MarketValidation[]
+
+  @@index([id])
+  @@index([userPersonaId])
+}
+
+model UserPersona {
+  id                        Int               @id @default(autoincrement())
+  user                      User?
+  goal                      UserGoal
+  skills                    String[]
+  interests                 String[]
+  loseTrackOfTimeAreas      String[]
+  lovedDoingAt10            String[]
+  issuesSpokenUpAbout       String[]
+  naturallyCuriousAbout     String[]
+  feelsLikePlay             String[]
+  continuouslyLearningAbout String[]
+  coreValues                String[]
+  drivingBelief             String?
+  hereToDo                  String
+  turningPoint              String
+  wishMoreUnderstood        String?
+  unspokenRules             String[]
+  createdAt                 DateTime          @default(now())
+  updatedAt                 DateTime          @updatedAt
+  helpedOthersWith          String[]
+  areasNeededHelp           String[]
+  careerDirection           CareerDirection?
+  niches                    Niche[]
+  customerPersonas          CustomerPersona[]
+
+  @@index([id])
+}
+
+model Niche {
+  id                  Int              @id @default(autoincrement())
+  userPersonaId       Int
+  userPersona         UserPersona      @relation(fields: [userPersonaId], references: [id], onDelete: Cascade)
+  statement           String
+  createdAt           DateTime         @default(now())
+  updatedAt           DateTime         @updatedAt
+  validationQuestions String[]
+  uniqueValue         String?
+  marketGap           String?
+  competitiveEdge     String?
+  businessModel       BusinessModel?
+  supplyType          SupplyDemand?
+  proposition         Proposition?
+  demandType          SupplyDemand
+  criticality         Criticality?
+  adjacentNiches      String[]
+  scalabilityNote     String?
+  customerPersona     CustomerPersona?
+  nicheSolutions      NicheSolution[]
+  whyYou              String
+  offerSuites         OfferSuite[]
+  aiTokens            AiTokens[]
+
+  @@index([id])
+  @@index([statement])
+  @@index([userPersonaId])
+}
+
+model NicheSolution {
+  id              Int             @id @default(autoincrement())
+  nicheId         Int
+  niche           Niche           @relation(fields: [nicheId], references: [id], onDelete: Cascade)
+  outcome         SolutionOutcome
+  description     String[]
+  solution        String
+  deliveryFormat  DeliveryFormat?
+  timeframe       String?
+  pricingGuidance String?
+  uniqueApproach  String?
+  proofPoints     String[]
+  idealForStage   String?
+  bundlesWith     String[]
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+
+  @@index([id])
+  @@index([nicheId])
+}
+
+model OfferSuite {
+  id                Int                @id @default(autoincrement())
+  userId            Int
+  user              User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  nicheId           Int
+  niche             Niche              @relation(fields: [nicheId], references: [id], onDelete: Cascade)
+  offers            Offer[]
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  marketValidations MarketValidation[]
+
+  @@index([id])
+  @@index([nicheId, userId])
+  @@index([userId])
+}
+
+model Offer {
+  id             Int        @id @default(autoincrement())
+  offerSuiteId   Int
+  offerSuite     OfferSuite @relation(fields: [offerSuiteId], references: [id], onDelete: Cascade)
+  ticketSize     TicketSize
+  result         String
+  product        String?
+  service        String?
+  timeInvestment String
+  price          Float
+  bonuses        String[]
+  guarantee      String
+  journey        Step[]
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  @@index([id])
+  @@index([offerSuiteId])
+}
+
+model Step {
+  id          Int      @id @default(autoincrement())
+  name        String
+  timeFrame   Int?
+  title       String
+  description String
+  inclusions  String[]
+  offerId     Int
+  offer       Offer    @relation(fields: [offerId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([id])
+  @@index([offerId])
+}
+
+model MarketValidation {
+  id                       Int              @id @default(autoincrement())
+  offerSuiteId             Int
+  offerSuite               OfferSuite       @relation(fields: [offerSuiteId], references: [id], onDelete: Cascade)
+  verdict                  Float
+  tam                      BigInt
+  sam                      BigInt
+  som                      BigInt
+  growthDriver             String
+  growthObstacle           String
+  competitors              Competitor[]
+  uniqueSellingProposition String
+  createdAt                DateTime         @default(now())
+  updatedAt                DateTime         @updatedAt
+  relatedSearches          String[]
+  relatedQuestions         String[]
+  contentOpportunities     String[]
+  supply                   SupplyDemand?
+  demand                   SupplyDemand
+  proposition              Proposition?
+  competitionSize          Size
+  techDriven               Boolean
+  customerPersonaId        Int?
+  customerPersona          CustomerPersona? @relation(fields: [customerPersonaId], references: [id], onDelete: Cascade)
+  perceivedValue           Size
+  usageFrequency           Size
+
+  @@index([customerPersonaId])
+  @@index([id])
+  @@index([offerSuiteId])
+}
+
+model Competitor {
+  id                       Int              @id @default(autoincrement())
+  name                     String
+  website                  String
+  description              String
+  averagePrice             Float
+  marketSharePercent       Float
+  strengths                String[]
+  gaps                     String[]
+  uniqueSellingProposition String
+  marketValidationId       Int
+  marketValidation         MarketValidation @relation(fields: [marketValidationId], references: [id], onDelete: Cascade)
+  createdAt                DateTime         @default(now())
+  updatedAt                DateTime         @updatedAt
+
+  @@index([id])
+  @@index([marketValidationId])
+}
+
+model BusinessRoadmap {
+  id             Int         @id @default(autoincrement())
+  userId         Int
+  user           User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  mvpGoal        String
+  mvpPriority    String[]
+  launchTimeline Int
+  launchChannels String[]
+  keyMetrics     String[]
+  raiseMoney     Boolean     @default(false)
+  valuation      String?
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+  milestones     Milestone[]
+
+  @@index([id])
+  @@index([userId])
+}
+
+model Milestone {
+  id                 Int             @id @default(autoincrement())
+  businessRoadmapId  Int
+  businessRoadmap    BusinessRoadmap @relation(fields: [businessRoadmapId], references: [id], onDelete: Cascade)
+  title              String
+  actions            String[]
+  hiringRequirements String[]
+  timelineDays       Int
+  successCriterion   String
+  isCompleted        Boolean         @default(false)
+  createdAt          DateTime        @default(now())
+  updatedAt          DateTime        @updatedAt
+
+  @@index([id])
+  @@index([businessRoadmapId])
+}
+
+model CareerDirection {
+  id                  Int                  @id @default(autoincrement())
+  userPersonaId       Int                  @unique
+  userPersona         UserPersona          @relation(fields: [userPersonaId], references: [id], onDelete: Cascade)
+  statement           String
+  whyYou              String
+  careerArchetype     CareerArchetype?
+  workingStyle        WorkingStyle?
+  idealEnvironment    IdealEnvironment?
+  naturalStrengths    String[]
+  blindSpots          String[]
+  developmentAreas    String[]
+  demandOutlook       DemandOutlook?
+  salaryExpectation   String?
+  growthPotential     String?
+  immediateNextSteps  String[]
+  validationQuestions String[]
+  networkingAdvice    String?
+  fiveYearVision      String?
+  transitionStrategy  String?
+  roleRecommendations RoleRecommendation[]
+  careerRoadmap       CareerRoadmap?
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+  aiTokens            AiTokens[]
+
+  @@index([id])
+  @@index([userPersonaId])
+}
+
+model RoleRecommendation {
+  id                    Int               @id @default(autoincrement())
+  careerDirectionId     Int
+  careerDirection       CareerDirection   @relation(fields: [careerDirectionId], references: [id], onDelete: Cascade)
+  title                 String
+  industry              String
+  whyFit                String
+  salaryRange           String
+  skillGaps             String[]
+  companies             String[]
+  experienceRequired    String?
+  requiredSkills        String[]
+  niceToHaveSkills      String[]
+  certifications        String[]
+  portfolioProjects     String[]
+  learningResources     String[]
+  estimatedPrepTime     String?
+  jobBoards             String[]
+  keywordsTags          String[]
+  interviewFocus        String[]
+  competitionLevel      CompetitionLevel?
+  remoteViability       RemoteViability?
+  workLifeBalance       WorkLifeBalance?
+  stressLevel           StressLevel?
+  typicalDayDescription String[]
+  keyResponsibilities   String[]
+  collaborationStyle    String?
+  createdAt             DateTime          @default(now())
+  updatedAt             DateTime          @updatedAt
+
+  @@index([id])
+  @@index([careerDirectionId])
+}
+
+model CareerRoadmap {
+  id                Int               @id @default(autoincrement())
+  careerDirectionId Int               @unique
+  careerDirection   CareerDirection   @relation(fields: [careerDirectionId], references: [id], onDelete: Cascade)
+  targetRole        String
+  currentGap        String
+  timelineMonths    Int
+  milestones        CareerMilestone[]
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+
+  @@index([id])
+  @@index([careerDirectionId])
+}
+
+model CareerMilestone {
+  id               Int           @id @default(autoincrement())
+  careerRoadmapId  Int
+  careerRoadmap    CareerRoadmap @relation(fields: [careerRoadmapId], references: [id], onDelete: Cascade)
+  title            String // "Build Portfolio"
+  actions          String[] // ["Create 3 case studies", "Publish on LinkedIn"]
+  resources        String[] // ["Course: X", "Book: Y"]
+  timelineDays     Int
+  successCriterion String // "3 portfolio pieces live"
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  @@index([id])
+  @@index([careerRoadmapId])
+}
+
+model Slot {
+  id             String     @id @default(cuid())
+  title          String
+  description    String?
+  start          DateTime
+  end            DateTime
+  status         SlotStatus
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  professional   User?      @relation("Professional to Slot mapping", fields: [professionalId], references: [id])
+  professionalId Int?
+  meetingLink    String?
+  eventId        String?
+  user           User?      @relation("User to slot mapping", fields: [userId], references: [id])
+  userId         Int?
+
+  @@index([professionalId])
+  @@index([userId])
+}
+
+model Schedule {
+  id                String     @id @default(cuid())
+  daysOfWeek        Int[]
+  slotLength        Int
+  startTime         DateTime   @db.Timetz()
+  endTime           DateTime   @db.Timetz()
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+  professionalId    Int        @unique
+  holidays          DateTime[] @db.Timestamptz()
+  breakBetweenSlots Int        @default(0)
+  professional      User       @relation(fields: [professionalId], references: [id], onDelete: Cascade)
+}
+
+model ContactMessage {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  phone     String
+  message   String
+  createdAt DateTime @default(now())
+
+  @@index([email])
+  @@index([createdAt])
+}
+
+model AiTokens {
+  id                Int              @id @default(autoincrement())
+  userId            Int?
+  user              User?            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  model             String
+  careerDirectionId Int?
+  nicheId           Int?
+  careerDirection   CareerDirection? @relation(fields: [careerDirectionId], references: [id], onDelete: Cascade)
+  niche             Niche?           @relation(fields: [nicheId], references: [id], onDelete: Cascade)
+  inputTokens       Int              @default(0)
+  outputTokens      Int              @default(0)
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+
+  @@index([userId])
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+enum SolutionOutcome {
+  REMOVES_FEAR
+  BUILDS_MOMENTUM
+  SIMPLIFIES_EXECUTION
+  REWARDS_CURIOSITY
+}
+
+enum TicketSize {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum marketSize {
+  LARGE
+  SMALL
+}
+
+enum SupplyDemand {
+  LOCAL
+  GLOBAL
+}
+
+enum Proposition {
+  SAVE_TIME
+  GROW_REVENUE
+}
+
+enum Size {
+  HIGH
+  LOW
+}
+
+enum Scope {
+  EMAIL
+  PROFILE
+  OPENID
+  CALENDAR
+}
+
+enum SlotStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+enum UserGoal {
+  BUSINESS
+  CAREER
+}
+
+enum BusinessModel {
+  B2B
+  B2C
+  BOTH
+}
+
+enum Criticality {
+  CRITICAL
+  NICE_TO_HAVE
+}
+
+enum UrgencyLevel {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum AwarenessStage {
+  UNAWARE
+  PROBLEM_AWARE
+  SOLUTION_AWARE
+  PRODUCT_AWARE
+}
+
+enum CompanySize {
+  SOLO
+  SMALL_2_10
+  MEDIUM_11_50
+  LARGE_51_200
+  ENTERPRISE_200_PLUS
+}
+
+enum BuyingPower {
+  BUDGET_HOLDER
+  INFLUENCER
+  END_USER
+  CHAMPION
+}
+
+enum TechSavviness {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum EducationLevel {
+  HIGH_SCHOOL
+  BACHELORS
+  MASTERS
+  PHD
+  PROFESSIONAL
+  SELF_TAUGHT
+}
+
+enum DemandOutlook {
+  HIGH_DEMAND
+  MODERATE_DEMAND
+  NICHE_DEMAND
+  DECLINING
+}
+
+enum CompetitionLevel {
+  LOW
+  MODERATE
+  HIGH
+}
+
+enum RemoteViability {
+  FULLY_REMOTE
+  HYBRID
+  ONSITE_MOSTLY
+  ONSITE_ONLY
+}
+
+enum WorkLifeBalance {
+  EXCELLENT
+  GOOD
+  MODERATE
+  DEMANDING
+  INTENSE
+}
+
+enum StressLevel {
+  LOW
+  MODERATE
+  HIGH
+  VERY_HIGH
+}
+
+enum DeliveryFormat {
+  DONE_FOR_YOU
+  DONE_WITH_YOU
+  SELF_SERVICE
+  HYBRID
+}
+
+enum CareerArchetype {
+  BUILDER
+  CONNECTOR
+  ANALYST
+  CREATOR
+  LEADER
+  SUPPORTER
+  VISIONARY
+  ORGANIZER
+}
+
+enum WorkingStyle {
+  INDEPENDENT
+  COLLABORATIVE
+  LEADING_TEAMS
+  HYBRID
+}
+
+enum IdealEnvironment {
+  STARTUP
+  CORPORATE
+  REMOTE_FIRST
+  CONSULTING
+  AGENCY
+  FREELANCE
+  NONPROFIT
+  GOVERNMENT
+}
