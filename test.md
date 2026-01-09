@@ -1,52 +1,42 @@
-Generated Niche Prompt: Based on the following information, extract this person's skills, interests, values, driving belief, and identify their ideal business niche.
-
 ## RAW INPUTS
 
 **Activities that make them lose track of time:**
-Writing my thoughts into a coherent flow
-Journalling
-Reading up good pieces of literature and articles
+Coding
 
 **What they loved doing at age 10:**
-Reading Novels
-Writing small essays and stories
+Building a computer
 
 **Issues that would make them lose sleep:**
-People spreading misinformation or half baked information on social media
-People spreading hate in the name of social issues like feminism, minority support etc
+People not doing what they love
 
 **What they're naturally curious about:**
-Why there's selective outrage? Why people and even governments solve issues selectively
-How do orators (past or present) influence the people around them
+New roles and jobs in the age of AI
 
 **Activities that feel like play:**
-Writing any form of content - short or long form
-Writing in a way that people see / listen
+Breaking down problems into smaller chunks
 
 **Topics they continuously explore:**
-How to speak in a way that's influential
-Marketing and writing - connection and how to write a killer copy / article
+AI research and its outcomes
 
 **Some things they've helped others with:**
-Wrote a recommendation letter to a friend that landed him a job
+Helped a friend prepare for an interview
 
 **Things that they find difficult, but is necessary for their growth:**
-Using technology in my favour
-Understanding how to use AI as an assistant and not as my replacement
+People management
 
 **Something they wish more people understood:**
-Writing is about what you want to express, not how good your language skills are
+Happiness is no longer a luxury, it's a necessity
 
 **What they're here to do in life:**
-I am here to express myself freely and creatively, and make people see my point of view
+I'm here to help people with my unique creative skills
 
 **A turning point in their life:**
-Dropped out of college - best decision ever
+Getting laid off my job
 
 **3 rules they'd give their 18-year-old self:**
-Express freely - people who judge aren't worth your attention
-Words have power. Use them carefully but also strategically
-Knowing when to speak is far more crucial than knowing what to speak
+Be honest with yourself
+Be kind to others
+Be curious always
 
 ---
 
@@ -70,3 +60,5 @@ Extract and generate:
 6. **Customer Persona**: Detailed profile of their ideal customer.
 
 7. **Niche Solutions**: 3-5 specific problems their customer faces and solutions they can offer (typed as PRODUCT or SERVICE)
+
+Be specific to THIS person. No generic advice.

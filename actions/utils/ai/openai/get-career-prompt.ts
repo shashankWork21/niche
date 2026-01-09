@@ -11,7 +11,7 @@ ${promptData.loseTrackOfTimeAreas.join("\n")}
 **What they loved doing at age 10:**
 ${promptData.lovedDoingAt10.join("\n")}
 
-**Issues that would make them lose sleep:**
+**Issues that they would address if they had all the money in the world:**
 ${promptData.issuesSpokenUpAbout.join("\n")}
 
 **What they're naturally curious about:**

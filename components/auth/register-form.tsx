@@ -6,7 +6,9 @@ import { Eye, EyeOff } from "lucide-react";
 
 import { Role } from "@/app/generated/prisma/enums";
 import { registerUser } from "@/actions/auth/register-user";
+import { validateSession } from "@/actions/utils/auth/validate-session";
 import { useFormAction } from "@/hooks/form/use-from-action";
+import { useAuth } from "@/context/auth.context";
 
 import { FormErrors } from "@/components/form/form-errors";
 
@@ -24,17 +26,29 @@ interface RegisterFormProps {
 
 export function RegisterForm({ role, personaId }: RegisterFormProps) {
   const router = useRouter();
+  const { setUser } = useAuth();
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleSuccess = useCallback(
     (formState: FormState) => {
-      if (formState?.redirectTo) {
-        router.push(formState.redirectTo);
+      async function redirectUser() {
+        try {
+          const user = await validateSession();
+          if (user && setUser) {
+            setUser(user);
+          }
+          if (formState?.redirectTo) {
+            router.push(formState.redirectTo);
+          }
+        } catch (error) {
+          console.error("Failed to refresh session:", error);
+        }
       }
+      redirectUser();
     },
-    [router]
+    [router, setUser]
   );
 
   const { isSubmitting, formState, handleSubmit } = useFormAction(

@@ -27,7 +27,7 @@ export default function CuriosityStep({
 
       <div className="flex flex-col">
         <MultipleInputs
-          label="What issues would make you lose sleep?"
+          label="If you had all the money in the world, which issues in the world would you go about addressing?"
           name="issuesSpokenAbout"
           inputPlaceholder="Issue"
           count={issuesSpokenAbout}

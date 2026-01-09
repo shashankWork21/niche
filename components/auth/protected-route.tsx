@@ -52,7 +52,8 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
           fresh.firstName !== user.firstName ||
           fresh.lastName !== user.lastName ||
           fresh.isEmailVerified !== user.isEmailVerified ||
-          fresh.role !== user.role;
+          fresh.role !== user.role ||
+          fresh.userPersonaId !== user.userPersonaId;
         if (shouldUpdate) setUser(fresh);
       })
       .catch(() => {
