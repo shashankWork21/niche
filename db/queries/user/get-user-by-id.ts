@@ -15,6 +15,7 @@ export async function getUserById(userId: number) {
       phone: true,
       createdAt: true,
       updatedAt: true,
+      userPersonaId: true,
     },
   });
 

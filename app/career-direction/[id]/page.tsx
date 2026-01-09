@@ -1,5 +1,8 @@
+import { redirect } from "next/navigation";
+import { validateSession } from "@/actions/utils/auth/validate-session";
 import { getCareerDirectionById } from "@/db/queries/career-direction/get-career-direction-by-id";
 import { CareerResultsView } from "@/views/career/career-results-view";
+import { Role } from "@/app/generated/prisma/browser";
 
 export default async function CareerDirectionResultPage({
   params,
@@ -9,6 +12,21 @@ export default async function CareerDirectionResultPage({
   const { id } = await params;
   const careerDirectionId = parseInt(id, 10);
   const careerDirection = await getCareerDirectionById(careerDirectionId);
+
+  const user = await validateSession();
+
+  if (!user) {
+    redirect("/login");
+  }
+
+  const userPersonaId = user?.userPersonaId;
+
+  if (
+    careerDirection?.userPersonaId !== userPersonaId ||
+    user.role !== Role.ADMIN
+  ) {
+    redirect("/dashboard");
+  }
 
   if (!careerDirection) {
     return (

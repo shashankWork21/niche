@@ -4,10 +4,13 @@ import { FormState } from "@/lib/types";
 import { UserGoal, UserPersona } from "@/app/generated/prisma/client";
 import { getBusinessNicheFromOpenAI } from "../utils/ai/openai/niche-request";
 import { getCareerDirectionFromOpenAi } from "../utils/ai/openai/career-request";
+import { getUserPersonaById } from "@/db/queries/user-persona/get-user-persona-by-id";
+import { revalidatePath } from "next/cache";
 
 export async function getNicheFromPersona(
-  userPersona: UserPersona
+  userPersonaId: number
 ): Promise<FormState> {
+  const userPersona = (await getUserPersonaById(userPersonaId)) as UserPersona;
   const goal = userPersona.goal;
   switch (goal) {
     case UserGoal.BUSINESS:
@@ -47,6 +50,9 @@ export async function getNicheFromPersona(
         if (!nicheId || !customerPersonaId) {
           throw new Error("Failed to generate niche or customer persona.");
         }
+
+        revalidatePath(`/niche/${nicheId}`);
+        revalidatePath("/dashboard");
 
         return {
           success: true,
@@ -115,6 +121,9 @@ export async function getNicheFromPersona(
         }
 
         const { careerDirectionId } = result;
+
+        revalidatePath("/dashboard");
+        revalidatePath(`/career-direction/${careerDirectionId}`);
 
         return {
           success: true,

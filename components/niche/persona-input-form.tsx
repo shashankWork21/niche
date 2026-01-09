@@ -17,12 +17,14 @@ import { validateCurrentStep } from "./multi-step-form/validate-current-step";
 import HiddenInputs from "./multi-step-form/hidden-inputs";
 import StepSummary from "./multi-step-form/step-summary";
 import { createUserPersona } from "@/actions/user-persona/create-user-persona";
+import { useAuth } from "@/context/auth.context";
 
 type ValidationErrors = {
   [key: string]: string;
 };
 
 export default function PersonaInputForm() {
+  const { user } = useAuth();
   const router = useRouter();
   const [allowSubmit, setAllowSubmit] = useState(false);
 
@@ -63,12 +65,18 @@ export default function PersonaInputForm() {
   const handleSuccess = useCallback(
     (formState: FormState) => {
       if (formState.resultParams?.ids?.userPersonaId) {
-        router.push(
-          `/register?personaId=${formState.resultParams.ids.userPersonaId}`
-        );
+        if (!user) {
+          router.push(
+            `/register?personaId=${formState.resultParams.ids.userPersonaId}`
+          );
+        } else {
+          router.push(
+            `/dashboard?personaId=${formState.resultParams.ids.userPersonaId}`
+          );
+        }
       }
     },
-    [router]
+    [router, user]
   );
 
   const { formState, handleSubmit, isSubmitting } = useFormAction(

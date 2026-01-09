@@ -49,7 +49,7 @@ export async function createUserRecord({
     return {
       success: true,
       errors: {},
-      redirectTo: "/login",
+      redirectTo: "/dashboard",
       resultParams: {
         ids: {
           userId: user.id,
