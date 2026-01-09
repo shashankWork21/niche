@@ -2,7 +2,6 @@ import { validateSession } from "@/actions/utils/auth/validate-session";
 import { connectUserToPersona } from "@/db/mutations/user/connect-user-to-persona";
 import { getNicheOrCareerDirectionByUserPersona } from "@/db/queries/user-persona/get-niche-or-career-direction";
 import { DashboardPageView } from "@/views/dashboard";
-import { redirect } from "next/navigation";
 
 interface DashboardPageProps {
   searchParams: {
