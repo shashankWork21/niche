@@ -14,9 +14,7 @@ export default async function DashboardPage({
   searchParams,
 }: DashboardPageProps) {
   const user = await validateSession();
-  if (!user) {
-    redirect("/login");
-  }
+
   const { personaId } = await searchParams;
 
   if (personaId) {
