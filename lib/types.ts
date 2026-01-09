@@ -15,3 +15,8 @@ export interface FormState {
     invoiceNumber?: string;
   };
 }
+
+export interface NicheOrCareerData {
+  id: number;
+  statement: string;
+}
