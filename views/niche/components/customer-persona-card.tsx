@@ -43,7 +43,21 @@ export function CustomerPersonaCard({ persona }: CustomerPersonaCardProps) {
               </h3>
             </div>
             <div className="space-y-2 text-sm text-zinc-600">
-              <p>Roles: {persona.jobTitles.join(", ")}</p>
+              <p>
+                Roles:{" "}
+                {persona.jobTitles
+                  .map((title) =>
+                    title
+                      .split("_")
+                      .map(
+                        (word) =>
+                          word.charAt(0).toUpperCase() +
+                          word.slice(1).toLowerCase()
+                      )
+                      .join(" ")
+                  )
+                  .join(", ")}
+              </p>
               <p>Company Size: {persona.companySize}</p>
               <p>Tech Savviness: {persona.techSavviness}</p>
             </div>
