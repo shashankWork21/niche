@@ -21,7 +21,7 @@ export default async function NicheResultPage({
 
   const userPersonaId = user?.userPersonaId;
 
-  if (niche?.userPersonaId !== userPersonaId && user.role !== Role.ADMIN) {
+  if (niche?.userPersonaId !== userPersonaId || user.role !== Role.ADMIN) {
     redirect("/dashboard");
   }
 

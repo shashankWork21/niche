@@ -22,7 +22,7 @@ export default async function CareerDirectionResultPage({
   const userPersonaId = user?.userPersonaId;
 
   if (
-    careerDirection?.userPersonaId !== userPersonaId &&
+    careerDirection?.userPersonaId !== userPersonaId ||
     user.role !== Role.ADMIN
   ) {
     redirect("/dashboard");
