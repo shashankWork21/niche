@@ -18,9 +18,9 @@ interface RegisterFormViewProps {
 
 export function RegisterFormView({ role, personaId }: RegisterFormViewProps) {
   return (
-    <>
-      <div className="max-h-screen h-198">
-        <Card className="w-full max-w-lg mx-auto mt-20 bg-radial from-white to-blue-50">
+    <div className="min-h-screen flex flex-col">
+      <div className="flex-1 py-20 px-4">
+        <Card className="w-full max-w-lg mx-auto bg-radial from-white to-blue-50">
           <CardHeader>
             <CardTitle>Create an account</CardTitle>
             <CardDescription>
@@ -33,6 +33,6 @@ export function RegisterFormView({ role, personaId }: RegisterFormViewProps) {
         </Card>
       </div>
       <MarketingFooter />
-    </>
+    </div>
   );
 }

@@ -5,19 +5,14 @@ import { ArrowUpRight, Lightbulb, Target, TrendingUp } from "lucide-react";
 
 export function MarketingFooter() {
   return (
-    <footer className="relative overflow-hidden bg-linear-to-br from-blue-50 via-indigo-50/30 to-slate-50/20">
+    <footer className="relative mt-16 overflow-hidden bg-linear-to-br from-blue-50 via-indigo-50/30 to-slate-50/20">
       {/* Decorative texture overlay */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.03]"
+        className="pointer-events-none opacity-[0.03]"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
         }}
       />
-
-      {/* Gradient mesh accent */}
-      <div className="pointer-events-none absolute right-0 top-0 h-125 w-125 translate-x-1/3 -translate-y-1/2 opacity-30">
-        <div className="h-full w-full rounded-full bg-linear-to-br from-blue-300 via-indigo-200 to-transparent blur-[120px]" />
-      </div>
 
       <div className="relative mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:px-10 lg:py-20">
         {/* Top section - Brand statement with frameworks showcase */}

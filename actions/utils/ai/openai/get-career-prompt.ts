@@ -20,7 +20,7 @@ ${promptData.naturallyCuriousAbout.join("\n")}
 **Activities that feel like play:**
 ${promptData.feelsLikePlay.join("\n")}
 
-**Topics they continuously explore:**
+**Topics they continuously learn about:**
 ${promptData.continuouslyLearningAbout.join("\n")}
 
 **Some things they've helped others with:**
@@ -33,7 +33,7 @@ ${promptData.areasNeededHelp.join("\n")}
 **Something they wish more people understood:**
 ${promptData.wishMoreUnderstood}
 
-**What they're here to do in life:**
+**According to them, what they're here to do in life:**
 ${promptData.hereToDo}
 
 **A turning point in their life:**

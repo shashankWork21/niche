@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Check, X } from "lucide-react";
 
 import { Role } from "@/app/generated/prisma/enums";
 import { registerUser } from "@/actions/auth/register-user";
@@ -30,6 +30,30 @@ export function RegisterForm({ role, personaId }: RegisterFormProps) {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  // Password validation states
+  const [validations, setValidations] = useState({
+    minLength: false,
+    hasUppercase: false,
+    hasLowercase: false,
+    hasNumber: false,
+    hasSpecialChar: false,
+    passwordsMatch: false,
+  });
+
+  // Update validations when password changes
+  useEffect(() => {
+    setValidations({
+      minLength: password.length >= 8,
+      hasUppercase: /[A-Z]/.test(password),
+      hasLowercase: /[a-z]/.test(password),
+      hasNumber: /[0-9]/.test(password),
+      hasSpecialChar: /[!@#$%^&*(),.?":{}|<>]/.test(password),
+      passwordsMatch: password === confirmPassword && password.length > 0,
+    });
+  }, [password, confirmPassword]);
 
   const handleSuccess = useCallback(
     (formState: FormState) => {
@@ -164,6 +188,8 @@ export function RegisterForm({ role, personaId }: RegisterFormProps) {
             name="password"
             type={showPassword ? "text" : "password"}
             disabled={isSubmitting}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <button
             type="button"
@@ -173,6 +199,33 @@ export function RegisterForm({ role, personaId }: RegisterFormProps) {
             {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
           </button>
         </div>
+
+        {/* Password Requirements Checklist */}
+        {password.length > 0 && (
+          <div className="mt-3 space-y-2">
+            <ValidationItem
+              isValid={validations.minLength}
+              text="Password must be at least 8 characters"
+            />
+            <ValidationItem
+              isValid={validations.hasUppercase}
+              text="Must contain at least one uppercase letter"
+            />
+            <ValidationItem
+              isValid={validations.hasLowercase}
+              text="Must contain at least one lowercase letter"
+            />
+            <ValidationItem
+              isValid={validations.hasNumber}
+              text="Must contain at least one number"
+            />
+            <ValidationItem
+              isValid={validations.hasSpecialChar}
+              text="Must contain at least one special character"
+            />
+          </div>
+        )}
+
         {formState.errors?.password && (
           <FormErrors property={formState.errors?.password} />
         )}
@@ -190,6 +243,8 @@ export function RegisterForm({ role, personaId }: RegisterFormProps) {
             name="confirmPassword"
             type={showConfirmPassword ? "text" : "password"}
             disabled={isSubmitting}
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
           <button
             type="button"
@@ -199,6 +254,17 @@ export function RegisterForm({ role, personaId }: RegisterFormProps) {
             {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
           </button>
         </div>
+
+        {/* Password Match Validation */}
+        {confirmPassword.length > 0 && (
+          <div className="mt-3">
+            <ValidationItem
+              isValid={validations.passwordsMatch}
+              text="Passwords must match"
+            />
+          </div>
+        )}
+
         {formState.errors?.confirmPassword && (
           <FormErrors property={formState.errors?.confirmPassword} />
         )}
@@ -228,5 +294,34 @@ export function RegisterForm({ role, personaId }: RegisterFormProps) {
         </Button>
       </div>
     </form>
+  );
+}
+
+// Validation Item Component
+interface ValidationItemProps {
+  isValid: boolean;
+  text: string;
+}
+
+function ValidationItem({ isValid, text }: ValidationItemProps) {
+  return (
+    <div className="flex items-center gap-2 text-sm">
+      <div
+        className={`flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center transition-colors ${
+          isValid
+            ? "bg-green-500 text-white"
+            : "bg-gray-200 text-gray-400"
+        }`}
+      >
+        {isValid ? <Check size={12} strokeWidth={3} /> : <X size={12} strokeWidth={2} />}
+      </div>
+      <span
+        className={`transition-colors ${
+          isValid ? "text-green-600 font-medium" : "text-gray-600"
+        }`}
+      >
+        {text}
+      </span>
+    </div>
   );
 }

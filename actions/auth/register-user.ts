@@ -39,24 +39,26 @@ export async function registerUser(
 
   if (result.success) {
     revalidatePath("/admin/users");
+    const token = await generateToken(
+      result?.resultParams?.ids.userId as number
+    );
+
+    c.set("access_token", token.accessToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      expires: token.accessExpiresAt,
+      path: "/", // make token available across the entire app
+    });
+
+    c.set("refresh_token", token.refreshToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      expires: token.refreshExpiresAt,
+      path: "/", // make token available across the entire app
+    });
   }
 
-  const token = await generateToken(result?.resultParams?.ids.userId as number);
-
-  c.set("access_token", token.accessToken, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
-    expires: token.accessExpiresAt,
-    path: "/", // make token available across the entire app
-  });
-
-  c.set("refresh_token", token.refreshToken, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
-    expires: token.refreshExpiresAt,
-    path: "/", // make token available across the entire app
-  });
   return result;
 }

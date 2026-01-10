@@ -51,7 +51,7 @@ export default function CuriosityStep({
         />
 
         <MultipleInputs
-          label="What topics do you find yourself exploring continuously?"
+          label="What topics do you find yourself learning about continuously?"
           name="continuouslyLearningAbout"
           inputPlaceholder="Topic"
           count={continuouslyLearningAbout}
