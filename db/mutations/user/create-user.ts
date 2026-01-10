@@ -34,10 +34,12 @@ export async function createUserRecord({
       firstName,
       lastName,
       email,
-      phone,
       password,
       role,
     };
+    if (phone) {
+      data.phone = phone;
+    }
     if (userPersonaId) {
       data.userPersonaId = userPersonaId;
     }
