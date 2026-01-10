@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Eye, EyeOff, Check, X } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 
 import { Role } from "@/app/generated/prisma/enums";
 import { registerUser } from "@/actions/auth/register-user";
@@ -18,6 +18,7 @@ import { Input } from "../ui/input";
 import { Checkbox } from "../ui/checkbox";
 import { Button } from "../ui/button";
 import { FormState } from "@/lib/types";
+import ValidationItem from "./password-validation";
 
 interface RegisterFormProps {
   role: Role;
@@ -33,27 +34,15 @@ export function RegisterForm({ role, personaId }: RegisterFormProps) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  // Password validation states
-  const [validations, setValidations] = useState({
-    minLength: false,
-    hasUppercase: false,
-    hasLowercase: false,
-    hasNumber: false,
-    hasSpecialChar: false,
-    passwordsMatch: false,
-  });
-
-  // Update validations when password changes
-  useEffect(() => {
-    setValidations({
-      minLength: password.length >= 8,
-      hasUppercase: /[A-Z]/.test(password),
-      hasLowercase: /[a-z]/.test(password),
-      hasNumber: /[0-9]/.test(password),
-      hasSpecialChar: /[!@#$%^&*(),.?":{}|<>]/.test(password),
-      passwordsMatch: password === confirmPassword && password.length > 0,
-    });
-  }, [password, confirmPassword]);
+  // Password validation derived state
+  const validations = {
+    minLength: password.length >= 8,
+    hasUppercase: /[A-Z]/.test(password),
+    hasLowercase: /[a-z]/.test(password),
+    hasNumber: /[0-9]/.test(password),
+    hasSpecialChar: /[!@#$%^&*(),.?":{}|<>]/.test(password),
+    passwordsMatch: password === confirmPassword && password.length > 0,
+  };
 
   const handleSuccess = useCallback(
     (formState: FormState) => {
@@ -293,35 +282,9 @@ export function RegisterForm({ role, personaId }: RegisterFormProps) {
           {isSubmitting ? "Registering..." : "Register"}
         </Button>
       </div>
+      {formState.errors?._form && (
+        <FormErrors property={formState.errors?._form} />
+      )}
     </form>
-  );
-}
-
-// Validation Item Component
-interface ValidationItemProps {
-  isValid: boolean;
-  text: string;
-}
-
-function ValidationItem({ isValid, text }: ValidationItemProps) {
-  return (
-    <div className="flex items-center gap-2 text-sm">
-      <div
-        className={`flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center transition-colors ${
-          isValid
-            ? "bg-green-500 text-white"
-            : "bg-gray-200 text-gray-400"
-        }`}
-      >
-        {isValid ? <Check size={12} strokeWidth={3} /> : <X size={12} strokeWidth={2} />}
-      </div>
-      <span
-        className={`transition-colors ${
-          isValid ? "text-green-600 font-medium" : "text-gray-600"
-        }`}
-      >
-        {text}
-      </span>
-    </div>
   );
 }
