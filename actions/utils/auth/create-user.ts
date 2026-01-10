@@ -85,7 +85,7 @@ export async function createUser({
     email,
     firstName,
     lastName,
-    phone,
+    phone: phone || "",
     password,
     role,
     userPersonaId,
