@@ -34,6 +34,7 @@ export function RegisterForm({ role, personaId }: RegisterFormProps) {
   const handleSuccess = useCallback(
     (formState: FormState) => {
       async function redirectUser() {
+        if (!formState.success) return;
         try {
           const user = await validateSession();
           if (user && setUser) {
