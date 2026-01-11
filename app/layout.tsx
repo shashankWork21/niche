@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "Find your Niche by Smart Algorhythm",
-  description: "Find your ideal niche or career direction with AI-powered insights",
+  description:
+    "Find your ideal niche or career direction with AI-powered insights",
 };
 
 export default function RootLayout({
@@ -17,6 +19,7 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         <Providers>{children}</Providers>
       </body>
+      <Analytics />
     </html>
   );
 }
