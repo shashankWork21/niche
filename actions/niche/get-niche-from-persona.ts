@@ -5,6 +5,9 @@ import { UserGoal, UserPersona } from "@/app/generated/prisma/client";
 import { getBusinessNicheFromOpenAI } from "../utils/ai/openai/niche-request";
 import { getCareerDirectionFromOpenAi } from "../utils/ai/openai/career-request";
 import { getUserPersonaById } from "@/db/queries/user-persona/get-user-persona-by-id";
+import { getUserByPersonaId } from "@/db/queries/user/get-user-by-persona-id";
+import { sendNicheReadyEmail } from "../user/send-niche-ready-email";
+import { sendCareerReadyEmail } from "../user/send-career-ready-email";
 import { revalidatePath } from "next/cache";
 
 export async function getNicheFromPersona(
@@ -49,6 +52,22 @@ export async function getNicheFromPersona(
 
         if (!nicheId || !customerPersonaId) {
           throw new Error("Failed to generate niche or customer persona.");
+        }
+
+        // Send email notification
+        const user = await getUserByPersonaId(userPersonaId);
+        if (user) {
+          console.log("Sending niche ready email to:", user.email);
+          try {
+            await sendNicheReadyEmail({
+              email: user.email,
+              firstName: user.firstName,
+              nicheId,
+            });
+          } catch (emailError) {
+            // Log email error but don't fail the entire operation
+            console.error("Failed to send niche ready email:", emailError);
+          }
         }
 
         revalidatePath(`/niche/${nicheId}`);
@@ -122,6 +141,25 @@ export async function getNicheFromPersona(
 
         const { careerDirectionId } = result;
 
+        if (!careerDirectionId) {
+          throw new Error("Failed to generate career direction.");
+        }
+
+        // Send email notification
+        const user = await getUserByPersonaId(userPersonaId);
+        if (user) {
+          try {
+            await sendCareerReadyEmail({
+              email: user.email,
+              firstName: user.firstName,
+              careerDirectionId,
+            });
+          } catch (emailError) {
+            // Log email error but don't fail the entire operation
+            console.error("Failed to send career ready email:", emailError);
+          }
+        }
+
         revalidatePath("/dashboard");
         revalidatePath(`/career-direction/${careerDirectionId}`);
 
@@ -132,7 +170,7 @@ export async function getNicheFromPersona(
           resultParams: {
             ids: {
               userPersonaId: userPersona.id,
-              careerDirectionId: careerDirectionId || 0,
+              careerDirectionId,
             },
           },
         };

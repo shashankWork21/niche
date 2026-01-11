@@ -14,7 +14,7 @@ export interface NichePromptData {
 }
 
 export function getBusinessNichePrompt(promptData: NichePromptData): string {
-  const prompt = `Based on the following information, extract this person's skills, interests, values, driving belief, and identify their ideal business niche.
+  const prompt = `Analyze the following responses and identify this person's ideal business niche.
 
 ## RAW INPUTS
 
@@ -52,31 +52,7 @@ ${promptData.hereToDo}
 ${promptData.turningPoint}
 
 **3 rules they'd give their 18-year-old self:**
-${promptData.unspokenRules.join("\n")}
-
----
-
-## YOUR TASK
-
-Extract and generate:
-
-1. **Skills**: What are they actually good at? (based on what they do, learn, and lose track of time doing)
-
-2. **Interests**: What topics/areas are they drawn to? (based on curiosity, play, and continuous learning)
-
-3. **Core Values**: Convert their 3 rules into 3 single-word values (e.g., Independence, Truth, Growth, Courage, Resilience, Curiosity)
-
-4. **Driving Belief**: Convert "something they wish more people understood" into format: "[Topic] is really about [their insight], not [common misconception]"
-
-5. **Niche**: Who should they help, with what problem, for what result?
-   - Statement format: "I help [SPECIFIC PERSON] who struggle with [SPECIFIC PROBLEM] to achieve [SPECIFIC RESULT]"
-   - WhyYou: Connect their story, turning point, and skills to why THEY are the right person
-
-6. **Customer Persona**: Detailed profile of their ideal customer.
-
-7. **Niche Solutions**: 3-5 specific problems their customer faces and solutions they can offer (typed as PRODUCT or SERVICE)
-
-Be specific to THIS person. No generic advice.`;
+${promptData.unspokenRules.join("\n")}`;
 
   console.log("Generated Niche Prompt:", prompt);
   return prompt;

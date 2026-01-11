@@ -13,7 +13,7 @@ export function buildEmailTemplate({
   buttonUrl: string;
   footerNote: string;
 }) {
-  const brand = "the Niche Tool by SmartAlgorhythm";
+  const brand = "Find your Niche by Smart Algorhythm";
   const text = `${brand}\n\n${title}\n\n${intro}\n\n${buttonText}: ${buttonUrl}\n\n${footerNote}\n`;
 
   const html = `<!doctype html>

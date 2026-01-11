@@ -31,9 +31,6 @@ export default function NicheView({ niches }: NicheViewProps) {
             key={niche.id}
             className="group relative p-6 border border-gray-200 dark:border-gray-800 rounded-xl bg-linear-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-950 shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
           >
-            {/* Decorative gradient border on hover */}
-            <div className="absolute inset-0 rounded-xl bg-linear-to-r from-blue-600 to-blue-800 opacity-0 group-hover:opacity-100 transition-opacity -z-10 blur-xl" />
-
             {/* Number badge */}
             <div className="absolute -top-3 -left-3 w-8 h-8 bg-linear-to-br from-blue-700 to-blue-900 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">
               {index + 1}

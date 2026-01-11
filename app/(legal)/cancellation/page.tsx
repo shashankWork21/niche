@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Refund Policy | the Niche Tool",
-  description: "Refund Policy for the Niche Tool",
+  title: "Refund Policy | Find your Niche by Smart Algorhythm",
+  description: "Refund Policy for Find your Niche by Smart Algorhythm",
 };
 
 export default function CancellationPage() {
@@ -16,7 +16,7 @@ export default function CancellationPage() {
         <section>
           <h2>1. Overview</h2>
           <p>
-            The Niche Tool offers one-time purchase products. We do not offer
+            Find your Niche by Smart Algorhythm offers one-time purchase products. We do not offer
             subscription-based services. All purchases are single transactions
             for specific products or services.
           </p>
