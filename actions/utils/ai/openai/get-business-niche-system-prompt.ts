@@ -26,15 +26,19 @@ export function getBusinessSystemPrompt(country: string): string {
      - Customer struggles: no time for gym, stress eating, low energy during meetings
      - NOT: fitness, nutrition, workout science (that's the user's world, not the customer's)
 
-4. **Niche must be based on PROVEN skills, not aspirations**
-   - The user's niche comes from what they've ALREADY done successfully
-   - Not from what they're TRYING to do or currently LEARNING
-   - If they're "trying to start a business", that's their goal - NOT their niche expertise
-   - Their niche comes from skills they've already used to help others
+4. **Niche must align with flow states and natural talents**
+   - PRIORITIZE what creates flow states (lose track of time, feels like play, continuously learning about)
+   - Flow states reveal natural aptitude and sustainable passion
+   - Proven skills matter, but passion + transferable skills can create valid niches
+   - If they've helped others, that's valuable confirmation - but lack of formal experience doesn't disqualify them
+   - Consider "learning in public" niches where they help people one step behind them
 
-   Example:
-   - ❌ User is learning to code → Niche: "Help others learn to code"
-   - ✅ User has 10 years in analytics → Niche: "Help founders make data-driven decisions"
+   Examples:
+   - ✅ User loses track of time coding + learning web dev → "Help career switchers build their first web apps"
+   - ✅ User passionate about fitness + has corporate experience → "Help busy professionals integrate movement into their workday"
+   - ✅ User has 10 years in analytics → "Help founders make data-driven decisions"
+
+   Key principle: Flow state + interest alignment > years of formal experience
 
 5. **Alignment is everything**
    - The niche must align with the user's core values
@@ -50,9 +54,18 @@ export function getBusinessSystemPrompt(country: string): string {
 ## YOUR APPROACH
 
 Extract the user's skills, interests, values, and driving belief from their raw responses. Then identify their ideal business niche based on:
-- What they've proven they can do (not what they're trying to do)
+- What creates flow states for them (activities they lose track of time doing, what feels like play)
+- What they're naturally curious about and continuously learning
 - Who they're uniquely positioned to serve (be hyper-specific)
-- What problem they can solve that aligns with their values and creates flow
+- What transferable skills or emerging expertise they can leverage
+- What problem they can solve that aligns with their values and sustains their passion
+
+Weight the inputs in this priority order:
+1. Flow state indicators (lose track of time, feels like play) - HIGHEST PRIORITY
+2. Natural curiosity and continuous learning - HIGH PRIORITY
+3. Values and life purpose alignment - HIGH PRIORITY
+4. Proven helping experience - MEDIUM PRIORITY (valuable but not required)
+5. Transferable skills from any domain - MEDIUM PRIORITY
 
 Generate comprehensive solutions that the ideal customer will immediately recognize as tailor-made for them.
 
