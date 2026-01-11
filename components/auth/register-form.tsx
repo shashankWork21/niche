@@ -85,7 +85,7 @@ export function RegisterForm({ role, personaId }: RegisterFormProps) {
             htmlFor="firstName"
             className="block text-sm font-medium text-black dark:text-blue-300"
           >
-            First Name
+            First Name <span className="text-red-500">*</span>
           </label>
           <div className="mt-1">
             <Input
@@ -104,7 +104,7 @@ export function RegisterForm({ role, personaId }: RegisterFormProps) {
             htmlFor="lastName"
             className="block text-sm font-medium text-black dark:text-blue-300"
           >
-            Last Name
+            Last Name <span className="text-red-500">*</span>
           </label>
           <div className="mt-1">
             <Input
@@ -124,7 +124,7 @@ export function RegisterForm({ role, personaId }: RegisterFormProps) {
           htmlFor="email"
           className="block text-sm font-medium text-black dark:text-blue-300"
         >
-          Email address
+          Email address <span className="text-red-500">*</span>
         </label>
         <div className="mt-1">
           <Input
@@ -170,8 +170,9 @@ export function RegisterForm({ role, personaId }: RegisterFormProps) {
           htmlFor="password"
           className="block text-sm font-medium text-black dark:text-blue-300"
         >
-          Password
+          Password <span className="text-red-500">*</span>
         </label>
+
         <div className="mt-1 relative">
           <Input
             className="bg-white pr-10"
@@ -225,7 +226,7 @@ export function RegisterForm({ role, personaId }: RegisterFormProps) {
           htmlFor="confirmPassword"
           className="block text-sm font-medium text-black dark:text-blue-300"
         >
-          Confirm Password
+          Confirm Password <span className="text-red-500">*</span>
         </label>
         <div className="mt-1 relative">
           <Input
