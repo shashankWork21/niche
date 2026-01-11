@@ -151,6 +151,7 @@ export function RegisterForm({ role, personaId }: RegisterFormProps) {
             name="country_code"
             type="text"
             placeholder="+91"
+            defaultValue={"+91"}
             disabled={isSubmitting}
           />
           <Input
