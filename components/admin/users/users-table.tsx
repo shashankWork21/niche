@@ -10,7 +10,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import type { Role } from "@/app/generated/prisma/enums";
+import type { Role, UserGoal } from "@/app/generated/prisma/enums";
+import Link from "next/link";
 
 export type AdminUserRow = {
   id: number;
@@ -20,6 +21,8 @@ export type AdminUserRow = {
   role: Role;
   isEmailVerified: boolean;
   createdAt: string | Date;
+  goal: UserGoal;
+  links: string[];
 };
 
 function formatDate(value: string | Date) {
@@ -68,6 +71,12 @@ export function UsersTable({ users }: { users: AdminUserRow[] }) {
               Role
             </TableHead>
             <TableHead className="h-9 px-4 py-2 font-semibold text-blue-50">
+              Email Verified?
+            </TableHead>
+            <TableHead className="h-9 px-4 py-2 font-semibold text-blue-50">
+              Link(s)
+            </TableHead>
+            <TableHead className="h-9 px-4 py-2 font-semibold text-blue-50">
               Signed up
             </TableHead>
           </TableRow>
@@ -86,6 +95,27 @@ export function UsersTable({ users }: { users: AdminUserRow[] }) {
                   </TableCell>
                   <TableCell className="px-4">
                     <RoleBadge role={u.role} />
+                  </TableCell>
+                  <TableCell className="px-4">
+                    {u.isEmailVerified ? (
+                      <span className=" px-2 py-1 bg-green-200">Yes</span>
+                    ) : (
+                      <span className=" px-2 py-1 bg-red-200">No</span>
+                    )}
+                  </TableCell>
+                  <TableCell className="px-4 text-slate-700">
+                    {u.links.map((link, index) => (
+                      <div key={index}>
+                        <Link
+                          href={link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 underline"
+                        >
+                          {link}
+                        </Link>
+                      </div>
+                    ))}
                   </TableCell>
                   <TableCell className="px-4 text-slate-700">
                     {formatDate(u.createdAt)}

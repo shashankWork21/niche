@@ -9,16 +9,19 @@ export async function getUserByEmail(email: string) {
 }
 
 export async function getAllUsers() {
-  return await db.user.findMany({
+  const users = await db.user.findMany({
+    omit: {
+      password: true,
+    },
     orderBy: { createdAt: "desc" },
-    select: {
-      id: true,
-      email: true,
-      firstName: true,
-      lastName: true,
-      role: true,
-      isEmailVerified: true,
-      createdAt: true,
+    include: {
+      userPersona: {
+        include: {
+          niches: true,
+          careerDirection: true,
+        },
+      },
     },
   });
+  return users;
 }
