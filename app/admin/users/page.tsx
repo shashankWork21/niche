@@ -23,12 +23,12 @@ export default async function AdminUsersPage() {
       links:
         user?.userPersona?.goal === UserGoal.CAREER
           ? [
-              `https://${process.env.BASE_URL}/career-direction/${
+              `${process.env.BASE_URL}/career-direction/${
                 user?.userPersona?.careerDirection?.id || 0
               }`,
             ]
           : user.userPersona?.niches.map(
-              (niche) => `https://${process.env.BASE_URL}/niche/${niche.id}`
+              (niche) => `${process.env.BASE_URL}/niche/${niche.id}`
             ) || [],
     };
   });
