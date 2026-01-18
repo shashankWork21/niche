@@ -112,7 +112,9 @@ export function UsersTable({ users }: { users: AdminUserRow[] }) {
                           rel="noopener noreferrer"
                           className="text-blue-600 underline"
                         >
-                          {link}
+                          {link.includes("career-direction")
+                            ? "Career Direction"
+                            : `Niche ${index + 1}`}
                         </Link>
                       </div>
                     ))}
