@@ -22,6 +22,7 @@ export type AdminUserRow = {
   isEmailVerified: boolean;
   createdAt: string | Date;
   goal: UserGoal;
+  userPersonaId?: number;
   links: string[];
 };
 
@@ -74,7 +75,10 @@ export function UsersTable({ users }: { users: AdminUserRow[] }) {
               Email Verified?
             </TableHead>
             <TableHead className="h-9 px-4 py-2 font-semibold text-blue-50">
-              Link(s)
+              Persona
+            </TableHead>
+            <TableHead className="h-9 px-4 py-2 font-semibold text-blue-50">
+              Result Link(s)
             </TableHead>
             <TableHead className="h-9 px-4 py-2 font-semibold text-blue-50">
               Signed up
@@ -101,6 +105,20 @@ export function UsersTable({ users }: { users: AdminUserRow[] }) {
                       <span className=" px-2 py-1 bg-green-200">Yes</span>
                     ) : (
                       <span className=" px-2 py-1 bg-red-200">No</span>
+                    )}
+                  </TableCell>
+                  <TableCell className="px-4 text-slate-700">
+                    {u.userPersonaId ? (
+                      <Link
+                        href={`/admin/user-persona/${u.userPersonaId}`}
+                        className="text-blue-600 underline hover:text-blue-800"
+                      >
+                        View Persona #{u.userPersonaId}
+                      </Link>
+                    ) : (
+                      <span className="text-slate-400 text-sm">
+                        No persona
+                      </span>
                     )}
                   </TableCell>
                   <TableCell className="px-4 text-slate-700">

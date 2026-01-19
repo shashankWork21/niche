@@ -20,6 +20,7 @@ export default async function AdminUsersPage() {
       isEmailVerified: user.isEmailVerified,
       createdAt: user.createdAt,
       goal: user.userPersona?.goal || UserGoal.CAREER,
+      userPersonaId: user.userPersona?.id,
       links:
         user?.userPersona?.goal === UserGoal.CAREER
           ? [
