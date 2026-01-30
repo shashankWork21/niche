@@ -11,9 +11,9 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@aws-sdk/client-ses": "^3.971.0",
-    "@prisma/adapter-pg": "^7.2.0",
-    "@prisma/client": "^7.2.0",
+    "@aws-sdk/client-ses": "^3.978.0",
+    "@prisma/adapter-pg": "^7.3.0",
+    "@prisma/client": "^7.3.0",
     "@radix-ui/react-checkbox": "^1.3.3",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-select": "^2.2.6",
@@ -25,15 +25,15 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "jsonwebtoken": "^9.0.3",
-    "lucide-react": "^0.562.0",
-    "next": "16.1.3",
-    "openai": "^6.16.0",
+    "lucide-react": "^0.563.0",
+    "next": "16.1.6",
+    "openai": "^6.17.0",
     "perplexity": "^1.0.1",
-    "prisma": "^7.2.0",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
+    "prisma": "^7.3.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
     "tailwind-merge": "^3.4.0",
-    "zod": "^4.3.5"
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -42,12 +42,13 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.1.3",
+    "eslint-config-next": "16.1.6",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.4.0",
     "typescript": "^5"
   },
   "overrides": {
-    "hono": "4.11.4"
+    "hono": "^4.11.6",
+    "lodash": "^4.17.21"
   }
 }

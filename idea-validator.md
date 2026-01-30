@@ -1,44 +1,63 @@
-# Idea Generator & Validator - MVP Plan
+# Career Transformation Platform - Product Vision
 
 ## Executive Summary
 
-An AI-powered tool that helps aspiring entrepreneurs and coaches discover validated business ideas by transforming their skills, experience, and problem interests into market-positioned offers with clear niches and ideal client profiles.
+A comprehensive career transformation platform that helps people discover their ideal business niche or career direction through AI-powered analysis, then transforms that insight into execution with accountability features, learning paths, milestone tracking, and job matching - taking users from confusion to their first win.
+
+**Vision:** "We don't just generate advice - we create behavior change through execution and accountability."
 
 **Part of:** SmartAlgorhythm ecosystem
-**Target MVP Timeline:** 15 days
-**Early Traction:** 30+ organic conversations on custom GPT (zero marketing)
-**Tech Stack:** Next.js (full-stack)
+**Target Timeline:** 12 weeks (AWS Challenge optimized)
+**Early Traction:** 25 users completed discovery, ready for accountability testing
+**Tech Stack:** AWS Bedrock (Claude 3.5 Sonnet, Agents), Knowledge Bases, Next.js, RDS PostgreSQL, EventBridge, SNS/SES, S3
 
 ---
 
 ## Problem Statement
 
+### The Critical Gap: Insight Without Execution
+
+**80% of people who discover their "purpose" never act on it.** Why? They lack:
+- Structure for daily action
+- Accountability when motivation fades
+- Clear milestones to track progress
+- Handholding through the learning curve
+- Connection to opportunities (jobs/clients)
+
 ### Primary Audience Pain Points
 
 **Aspiring Entrepreneurs:**
-
 - "I don't know what business to start"
 - Have skills but can't translate them into a viable business
 - Analysis paralysis from too many options
-- No framework for evaluating ideas
+- Get clarity but don't know the NEXT step
+- Lose momentum after initial excitement
+
+**Career Switchers:**
+- "I want to change careers but don't know how to start"
+- Overwhelmed by skill gap
+- Need structured learning path
+- Can't build portfolio without guidance
+- Don't know where to apply
 
 **Coaches & Service Providers:**
-
 - "Is my current offer positioned correctly?"
 - Need to validate new service offerings
 - Struggle with niche clarity
-- Can't articulate their ideal client profile
+- Can't stay consistent with marketing
 
 ### Current Solutions (Competitors)
 
 | Competitor                   | What They Do                | Weakness                                            |
 | ---------------------------- | --------------------------- | --------------------------------------------------- |
-| BizplanBuilder AI            | Business plan creation      | Limited personalization, high price, no niche focus |
-| NicheHacker                  | Niche market discovery      | Manual research heavy, less AI-driven               |
-| IdeaBuddy                    | Interactive idea validation | Not AI-based, limited ideas without upgrade         |
-| General AI (ChatGPT, Claude) | Versatile brainstorming     | No business validation, generic output              |
+| BizplanBuilder AI            | Business plan creation      | No execution tracking, no accountability            |
+| NicheHacker                  | Niche market discovery      | Stops at discovery, no roadmap                      |
+| IdeaBuddy                    | Interactive idea validation | No learning paths, no job matching                  |
+| General AI (ChatGPT, Claude) | Versatile brainstorming     | No persistence, no tracking, no accountability      |
+| Career Coaches               | Personalized guidance       | Expensive ($200-500/session), not scalable          |
+| Coursera/Udemy               | Learning resources          | No personalization, no accountability               |
 
-**Gap in Market:** No tool combines AI-driven ideation with structured frameworks that force specificity AND lead to human consulting.
+**Gap in Market:** No platform combines AI-driven discovery with execution tracking, learning integration, accountability systems, and job marketplace in one unified experience.
 
 ---
 
@@ -46,43 +65,73 @@ An AI-powered tool that helps aspiring entrepreneurs and coaches discover valida
 
 ### Core Value Proposition
 
-Transform your unique skills, experiences, and passion into laser-focused, validated business ideas complete with market insights, positioning, and client profiles.
+Discover your ideal business niche or career direction through AI analysis, then execute with confidence using personalized roadmaps, accountability tracking, curated learning paths, and job opportunities - all in one platform.
 
-### How It Works
+### How It Works - Four Integrated Modules
 
 ```
-User Inputs Skills + Experience + Problem Interest
-            ↓
-    Structured Analysis (AI + Frameworks)
-            ↓
-    Niche Statement + Offer Statement + ICP
-            ↓
-    Market Analysis + Strategy Recommendations
-            ↓
-    Validation Questions + Next Steps
+MODULE 1: AI-Powered Discovery (Free)
+User Inputs: Flow States + Passions + Life Experiences
+         ↓
+AWS Bedrock Analysis (Claude 3.5 Sonnet)
+         ↓
+Output: Niche/Career Direction + Ideal Customer Persona + Solutions/Roles
+         ↓
+
+MODULE 2: Intelligent Roadmap Generation (Free/Freemium)
+AWS Bedrock Agents create 90-day execution plan
+         ↓
+Weekly Milestones: Skills to learn + Projects to build + Actions to take
+         ↓
+
+MODULE 3: Accountability & Progress Tracking (Core Platform)
+Milestone check-ins with proof uploads (S3)
+Streak tracking + Smart notifications (EventBridge, SNS/SES)
+Reward system (points/badges)
+Learning integration with course recommendations
+AI coaching check-ins (Bedrock)
+         ↓
+
+MODULE 4: Two-Sided Job Marketplace
+For individuals: Jobs filtered by niche/career alignment
+For businesses: Post roles, search by flow-state fit
+Smart matching (Bedrock analyzes fit scores)
+AI-generated cover letters from user's "Why You" story
 ```
 
 ### Key Differentiators
 
-1. **Structured Framework** - Forces specificity, not generic brainstorming
-2. **One-Time Pricing** - No subscription churn risk
-3. **Human Escalation Path** - Premium tier leads to 1:1 consulting
-4. **Framework-Driven Analysis** - Uses proven startup guidance frameworks
-5. **Validated Framework** - Already tested with 30+ GPT conversations
+1. **Execution-Focused** - Not just insight, but daily action with accountability
+2. **AI-Powered Roadmaps** - Bedrock Agents generate personalized 90-day plans
+3. **Learning Integration** - Direct course recommendations with progress tracking
+4. **Smart Accountability** - EventBridge schedules adaptive reminders based on user behavior
+5. **Job Marketplace** - Match by flow-state alignment, not just skills
+6. **Behavior Change System** - Streaks, rewards, and AI check-ins create momentum
+7. **AWS-Native** - Deep integration with Bedrock, Knowledge Bases, EventBridge, SNS/SES
+8. **Validated Framework** - Discovery tested with 25 users
 
 ---
 
 ## Pricing Model
 
-**Note:** Pricing strategy is currently being finalized.
+**Strategy:** Free discovery to build trust, one-time roadmap fee to demonstrate value, subscription for learning/tracking and job marketplace access.
 
-| Tier                  | What They Get                                                       | Status       |
-| --------------------- | ------------------------------------------------------------------- | ------------ |
-| Free                  | Complete niche/career discovery with comprehensive analysis          | Live         |
-| Generate Another Idea | Additional AI-generated niche/career directions with comparison      | Planned      |
-| Market Validation     | Real market data - TAM/SAM/SOM, competition, framework analysis     | Planned      |
-| Business/Career Roadmap | Detailed 90-day plan with milestones, resources, timeline          | Planned      |
-| 1:1 Strategy Call     | Personalized guidance with founder                                  | Planned      |
+| Tier                  | What They Get                                                       | Status       | Price |
+| --------------------- | ------------------------------------------------------------------- | ------------ | ----- |
+| **Free**              | Complete niche/career discovery with comprehensive analysis          | Live         | $0    |
+| **Roadmap**           | Personalized 90-day roadmap with weekly milestones (one-time purchase) | Building     | $29   |
+| **Learning & Tracking** | Accountability tracking, learning integration, milestone reminders, streak tracking, AI coaching | Planned | $15/mo |
+| **Growth Plan**       | Everything in Learning + job board access, market validation, advanced analytics, priority support | Planned | $49/mo |
+| **Enterprise**        | For businesses: Post jobs, search candidates, team accounts         | Planned      | $199/mo |
+
+### Revenue Streams
+
+1. **One-Time Roadmap Sales:** $29 per roadmap generation (repeatable for new directions)
+2. **Subscription (Primary):** Learning & Tracking and Growth Plan monthly recurring
+3. **Job Postings:** Businesses pay per job listing ($99-299/post)
+4. **Course Affiliates:** Commission from course recommendations
+5. **Additional Roadmaps:** Users can purchase new roadmaps for different niches/careers
+6. **1:1 Consulting:** High-touch service for complex transitions
 
 ---
 
@@ -536,57 +585,176 @@ STEP 4: Life Rules
 
 ## Technical Architecture
 
-### Tech Stack
+### AWS-Native Tech Stack
 
-| Component      | Technology                 | Rationale                         |
-| -------------- | -------------------------- | --------------------------------- |
-| Framework      | Next.js 14 (App Router)    | Full-stack, founder expertise     |
-| Database       | PostgreSQL (via Prisma)    | Already using for SmartAlgorhythm |
-| AI Layer       | OpenAI API (GPT-4)         | Free tier generation              |
-| Research Layer | Perplexity API (sonar-pro) | Paid tier validation              |
-| Payments       | Razorpay                   | Indian market support             |
-| Auth           | NextAuth.js                | Simple, built-in                  |
-| Hosting        | Vercel                     | Optimized for Next.js             |
-| Analytics      | PostHog or Mixpanel        | Product analytics                 |
+| Component              | Technology                          | Purpose                                   |
+| ---------------------- | ----------------------------------- | ----------------------------------------- |
+| **AI Core**            | AWS Bedrock (Claude 3.5 Sonnet)     | Discovery analysis, roadmap generation    |
+| **Agent Framework**    | AWS Bedrock Agents                  | Autonomous roadmap creation               |
+| **Knowledge Layer**    | AWS Bedrock Knowledge Bases         | Course catalogs, job market data, skills  |
+| **Backend**            | Next.js 14 on AWS ECS/Lambda        | Full-stack application                    |
+| **Database**           | AWS RDS PostgreSQL (via Prisma)     | User data, progress, milestones           |
+| **File Storage**       | AWS S3                              | Milestone proof uploads, documents        |
+| **Notifications**      | AWS SNS + SES                       | Email/SMS notifications                   |
+| **Scheduling**         | AWS EventBridge                     | Streak tracking, milestone reminders      |
+| **Monitoring**         | AWS CloudWatch                      | Metrics, logs, custom dashboards          |
+| **Payments**           | Stripe                              | Subscriptions, job postings               |
+| **Auth**               | NextAuth.js                         | User authentication                       |
+| **Analytics**          | PostHog + CloudWatch Custom Metrics | Product analytics + AWS-native tracking   |
 
-### API Cost Estimates
+### AWS Cost Estimates (100 Active Users)
 
-| Service              | Usage                   | Monthly Cost (100 users) |
-| -------------------- | ----------------------- | ------------------------ |
-| OpenAI GPT-4         | Free tier generations   | ~$20-30                  |
-| Perplexity sonar-pro | Paid validations (~20%) | ~$10-15                  |
-| Vercel               | Hosting                 | ~$20                     |
-| **Total**            |                         | **~$50-65/month**        |
+| Service                      | Usage                                  | Monthly Cost |
+| ---------------------------- | -------------------------------------- | ------------ |
+| Bedrock (Claude 3.5 Sonnet)  | Discovery (100) + AI coaching (500)    | ~$40-60      |
+| Bedrock Agents               | Roadmap generation (100 executions)    | ~$20-30      |
+| Knowledge Bases              | Vector searches (1,000 queries)        | ~$15-25      |
+| RDS PostgreSQL (db.t3.micro) | Small instance with 20GB storage       | ~$15         |
+| ECS Fargate                  | 0.25 vCPU, 0.5GB RAM (continuous)      | ~$15-20      |
+| S3                           | 10GB storage, 1,000 uploads            | ~$2          |
+| SNS/SES                      | 10,000 notifications/month             | ~$5          |
+| EventBridge                  | 50,000 events/month                    | ~$0.05       |
+| CloudWatch                   | Logs + custom metrics                  | ~$5-10       |
+| **Total**                    |                                        | **~$117-167/month** |
 
-### Data Flow
+**Note:** Costs scale with usage. At 1,000 users: ~$800-1,200/month.
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                     Next.js App                          │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐     │
-│  │   Pages/    │  │   Server    │  │  Database   │     │
-│  │   Components│──│   Actions   │──│  (Prisma)   │     │
-│  └─────────────┘  └─────────────┘  └─────────────┘     │
-│                          │                              │
-│                          ▼                              │
-│           ┌────────────────────────┐                   │
-│           │      AI Services       │                   │
-│           ├────────────────────────┤                   │
-│           │ OpenAI API (Free tier) │                   │
-│           │ Perplexity (Paid tier) │                   │
-│           └────────────────────────┘                   │
-└─────────────────────────────────────────────────────────┘
-```
-
-### Data Model (Prisma Schema)
-
-**Core Models:**
+### System Architecture Diagram
 
 ```
+┌───────────────────────────────────────────────────────────────────┐
+│                         AWS Cloud                                  │
+│                                                                    │
+│  ┌────────────────────────────────────────────────────────┐      │
+│  │               Next.js App (ECS/Lambda)                  │      │
+│  │  ┌──────────┐  ┌──────────┐  ┌──────────────────┐     │      │
+│  │  │  Pages/  │  │  Server  │  │  RDS PostgreSQL  │     │      │
+│  │  │Components│──│  Actions │──│    (Prisma)      │     │      │
+│  │  └──────────┘  └──────────┘  └──────────────────┘     │      │
+│  └────────────────────────────────────────────────────────┘      │
+│                          │                                        │
+│                          ▼                                        │
+│  ┌──────────────────────────────────────────────────────┐        │
+│  │              AWS Bedrock Layer                        │        │
+│  ├──────────────────────────────────────────────────────┤        │
+│  │  • Claude 3.5 Sonnet (Discovery + AI Coaching)       │        │
+│  │  • Bedrock Agents (Roadmap Generation)               │        │
+│  │  • Knowledge Bases (Courses, Skills, Jobs)           │        │
+│  └──────────────────────────────────────────────────────┘        │
+│                          │                                        │
+│                          ▼                                        │
+│  ┌──────────────────────────────────────────────────────┐        │
+│  │          Supporting Services                          │        │
+│  ├──────────────────────────────────────────────────────┤        │
+│  │  S3 (File Storage) ← Milestone Proofs                │        │
+│  │  EventBridge ← Scheduled Check-ins, Streak Tracking  │        │
+│  │  SNS/SES ← Email/SMS Notifications                   │        │
+│  │  CloudWatch ← Metrics, Logs, Dashboards              │        │
+│  └──────────────────────────────────────────────────────┘        │
+└───────────────────────────────────────────────────────────────────┘
+```
+
+### Module 3: Accountability Engine Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│             User Progress Tracking Flow                      │
+└─────────────────────────────────────────────────────────────┘
+
+1. MILESTONE CHECK-IN
+   User marks milestone complete → Upload proof (screenshot/link) → S3
+                                  ↓
+   Prisma updates milestone status + timestamps
+                                  ↓
+   Points/badges calculated → Stored in PostgreSQL
+                                  ↓
+   EventBridge triggered → Schedule next reminder
+
+
+2. STREAK TRACKING
+   EventBridge (Daily 9 AM) → Check last activity timestamp
+                             ↓
+   If >24h → Streak reset → SNS notification ("You lost your streak!")
+   If <24h → Increment streak → SES email ("7-day streak! Keep going")
+
+
+3. SMART NOTIFICATIONS
+   EventBridge Rules:
+   • Daily (9 AM): "What's your one action today?"
+   • Milestone Due (3 days before): "Milestone X due in 3 days"
+   • Inactivity (7 days): "We miss you! Your roadmap is waiting"
+   • Streak Recovery (1 day away): "You're 1 day from a 7-day streak!"
+
+   Notification Delivery:
+   EventBridge → Lambda → SNS (SMS) / SES (Email) → User
+
+
+4. AI COACHING CHECK-INS
+   EventBridge (Weekly) → Trigger Bedrock prompt
+                        ↓
+   Bedrock analyzes: completed milestones, blocked items, user notes
+                        ↓
+   Generates: reflective questions, encouragement, roadmap adjustments
+                        ↓
+   Stored in PostgreSQL → Displayed in dashboard
+
+
+5. LEARNING INTEGRATION
+   Knowledge Base (S3 + Vector DB):
+   • Course catalog (Coursera, Udemy, YouTube)
+   • Skill frameworks
+   • Career data
+                        ↓
+   Bedrock Agent queries KB → Links courses to roadmap milestones
+                             ↓
+   User clicks course → PostgreSQL logs activity
+                      ↓
+   User marks course complete → Milestone progress updated
+```
+
+### Extended Data Model (Prisma Schema)
+
+**Core Models with Accountability & Job Marketplace:**
+
+```
+User
+├── id, email, name, createdAt
+├── subscriptionTier: FREE, PRO, GROWTH, ENTERPRISE
+├── subscriptionStatus: ACTIVE, CANCELED, EXPIRED
+├─> UserPersona[]
+├─> UserProgress (1:1)
+│   ├── currentStreak (days)
+│   ├── longestStreak
+│   ├── totalPoints
+│   ├── badges[] (JSON: {name, earnedAt, description})
+│   ├── lastActivityAt
+│   └── milestoneCompletionRate (%)
+├─> JobApplication[]
+└─> NotificationPreferences (1:1)
+    ├── emailDaily, emailWeekly, emailMilestones
+    ├── smsEnabled, smsUrgentOnly
+    └── timezone
+
 UserPersona (Central Hub)
 ├── Input Fields: loseTrackOfTimeAreas, lovedDoingAt10, etc.
 ├── Extracted Fields: skills[], interests[], coreValues[], drivingBelief
 ├── Goal: BUSINESS or CAREER
+├─> Roadmap (1:1) ← NEW
+│   ├── generatedAt, lastUpdatedAt
+│   ├── durationDays (default: 90)
+│   ├── status: ACTIVE, COMPLETED, PAUSED
+│   └─> Milestone[] (weekly breakdown)
+│       ├── week, title, description
+│       ├── category: SKILL, PROJECT, NETWORKING, APPLICATION
+│       ├── successCriteria
+│       ├── estimatedHours
+│       ├── status: PENDING, IN_PROGRESS, COMPLETED, BLOCKED
+│       ├── completedAt, proofUrl (S3)
+│       ├── userNotes
+│       ├── linkedCourses[] → Course
+│       └─> AICheckIn[] ← NEW
+│           ├── triggeredAt, question, userResponse
+│           ├── aiSuggestions, adjustmentsMade
 │
 ├─[BUSINESS PATH]─> Niche
 │   ├── statement, whyYou
@@ -609,11 +777,10 @@ UserPersona (Central Hub)
 │   │   ├── deliveryFormat, timeframe, pricingGuidance
 │   │   └── uniqueApproach, proofPoints[], idealForStage, bundlesWith[]
 │   │
-│   └─> OfferSuite[] (Tier 2+)
-│       └─> MarketValidation
-│           ├── TAM, SAM, SOM
-│           ├── Competitors[]
-│           └── Framework recommendations
+│   └─> MarketValidation (Tier 3+)
+│       ├── TAM, SAM, SOM
+│       ├── Competitors[]
+│       └── Framework recommendations
 │
 └─[CAREER PATH]─> CareerDirection (1:1)
     ├── statement, whyYou
@@ -632,8 +799,50 @@ UserPersona (Central Hub)
     │   ├── Reality: experienceRequired, competitionLevel, remoteViability
     │   └── Day-to-Day: workLifeBalance, stressLevel, typicalDayDescription
     │
-    └─> CareerRoadmap (Tier 3+)
-        └─> CareerMilestone[]
+    └─> JobMatch[] ← NEW (links user to recommended jobs)
+        ├── jobId → Job
+        ├── fitScore (0-100, calculated by Bedrock)
+        ├── fitReasoning (why this job matches)
+        ├── status: SAVED, APPLIED, INTERVIEWING, REJECTED, ACCEPTED
+        └── appliedAt, aiGeneratedCoverLetter
+
+
+Course ← NEW (Knowledge Base backed)
+├── id, title, provider (COURSERA, UDEMY, YOUTUBE, FREE_RESOURCE)
+├── url, description, thumbnailUrl
+├── skills[], topics[]
+├── duration, difficulty: BEGINNER, INTERMEDIATE, ADVANCED
+├── price, isPaid
+├── rating, reviewCount
+└─> UserCourseProgress[]
+    ├── userId, courseId
+    ├── status: NOT_STARTED, IN_PROGRESS, COMPLETED
+    ├── startedAt, completedAt
+    └── linkedMilestoneId
+
+
+Job ← NEW (Two-Sided Marketplace)
+├── id, title, company, location
+├── description, requirements[], niceToHave[]
+├── salaryMin, salaryMax
+├── remote: FULLY, HYBRID, ONSITE
+├── postedById → User (business account)
+├── status: ACTIVE, FILLED, CLOSED
+├── postedAt, expiresAt
+├── flowStateAlignment[] (tags extracted by Bedrock)
+├── requiredSkills[], industryVerticals[]
+└─> JobApplication[]
+    ├── userId, jobId, status
+    ├── appliedAt, coverLetter (AI-generated or custom)
+    ├── resumeUrl (S3)
+    └── notes
+
+
+NotificationLog ← NEW
+├── userId, type: EMAIL, SMS, PUSH
+├── category: DAILY_PROMPT, MILESTONE_DUE, STREAK_ALERT, AI_CHECKIN
+├── sentAt, delivered, opened, clicked
+└── content (JSON)
 ```
 
 **Enums:**
@@ -658,9 +867,9 @@ UserPersona (Central Hub)
 
 ---
 
-## Implementation Status
+## Implementation Roadmap (12-Week AWS Challenge Plan)
 
-### ✅ Completed Features
+### ✅ Phase 0: Current Status (Completed)
 
 **Core Infrastructure:**
 - [x] Next.js 14 App Router setup
@@ -668,90 +877,299 @@ UserPersona (Central Hub)
 - [x] Authentication system (NextAuth.js)
 - [x] Database models for both Business and Career paths
 
-**Free Tier - Business Path:**
-- [x] Multi-step persona input form (8 multi-input + 3 reflective + life rules)
-- [x] OpenAI integration with structured output (Zod schemas)
-- [x] Niche generation with all enhanced fields:
-  - [x] Statement, WhyYou, Validation Questions
-  - [x] Unique Value, Market Gap, Competitive Edge
-  - [x] Business Model Classification (B2B/B2C/BOTH)
-  - [x] Supply/Demand Type, Proposition, Criticality
-  - [x] Adjacent Niches, Scalability Note
-- [x] Comprehensive Customer Persona (30+ fields)
-  - [x] Demographics, Professional, Psychographics, Behavioral
-  - [x] Pain Level, Urgency, Awareness Stage
-  - [x] Current Solutions, Frustrations, Aspirations
-- [x] Niche Solutions (3-5) with enhanced fields
-  - [x] Delivery Format, Timeframe, Pricing Guidance
-  - [x] Unique Approach, Proof Points, Stage, Bundling
-
-**Free Tier - Career Path:**
-- [x] Career Direction generation with all enhanced fields:
-  - [x] Statement, WhyYou, Validation Questions
-  - [x] Career Archetype, Working Style, Ideal Environment
-  - [x] Natural Strengths, Blind Spots, Development Areas
-  - [x] Demand Outlook, Salary Expectation, Growth Potential
-  - [x] Immediate Next Steps, Networking Advice
-  - [x] Five-Year Vision, Transition Strategy
-- [x] Role Recommendations (3-5) with comprehensive details:
-  - [x] Basic Info, Skills & Preparation, Job Search
-  - [x] Reality Check, Day-to-Day insights
+**Free Tier - Discovery (Live with 25 users):**
+- [x] Multi-step persona input form (12 deep questions)
+- [x] OpenAI integration with structured output (migrating to Bedrock)
+- [x] Niche/Career direction generation
+- [x] Customer persona and role recommendations
+- [x] Admin dashboard
 
 **Technical:**
-- [x] Server Actions (no traditional API routes)
+- [x] Server Actions, TypeScript, Error handling
 - [x] Form state management with custom hooks
-- [x] Error handling and validation
-- [x] TypeScript throughout
 
-### 🔨 In Progress
+---
 
-**UI/UX:**
-- [ ] Result display pages (currently showing JSON)
-- [ ] Niche view component (empty file)
-- [ ] Career direction view component
-- [ ] Dashboard to view past discoveries
+### 🔨 Phase 1: AWS Migration + Roadmap Generation (Weeks 1-2)
 
-### 📋 Planned Features
+**Goals:** Migrate to AWS Bedrock, deploy on AWS infrastructure, generate personalized roadmaps
 
-**Phase 1: Polish Free Tier (1-2 weeks)**
-- [ ] Beautiful result display UI
-- [ ] PDF export functionality
-- [ ] Email delivery of results
-- [ ] Dashboard with saved discoveries
-- [ ] Social sharing
+- [ ] **AWS Bedrock Setup**
+  - [ ] Migrate from OpenAI to AWS Bedrock (Claude 3.5 Sonnet)
+  - [ ] Set up Bedrock Agents for roadmap generation
+  - [ ] Configure IAM roles and policies
+  - [ ] Test structured output with Bedrock prompts
 
-**Phase 2: Market Research Tier**
-- [ ] Perplexity API integration
-- [ ] TAM/SAM/SOM calculation
-- [ ] Competitor analysis (3-5 competitors)
-- [ ] Framework 5, 6, 7 recommendations:
-  - [ ] MVP approach (Time/Money/Trust based)
-  - [ ] Pricing strategy
-  - [ ] Launch channel recommendations
-- [ ] Content opportunities analysis
-- [ ] Related searches and questions
+- [ ] **Knowledge Bases**
+  - [ ] Create S3 buckets for course catalogs, skill frameworks, career data
+  - [ ] Set up vector database for semantic search
+  - [ ] Ingest initial course data (Coursera, Udemy, YouTube)
+  - [ ] Test retrieval accuracy
 
-**Phase 3: Business/Career Roadmap**
-- [ ] 90-day milestone planning
-- [ ] Tech stack recommendations (for business)
-- [ ] Learning path with timeline (for career)
-- [ ] Revenue projections (for business)
-- [ ] Key metrics to track
+- [ ] **Roadmap Generation**
+  - [ ] Design Bedrock Agent prompts for 90-day plans
+  - [ ] Implement weekly milestone breakdown
+  - [ ] Link skills to course recommendations
+  - [ ] Store roadmaps in PostgreSQL
 
-**Phase 4: Monetization & Growth**
-- [ ] Payment integration (Razorpay)
-- [ ] "Generate Another Idea" tier
-- [ ] Comparison matrix for multiple niches
-- [ ] 1:1 booking integration
-- [ ] Referral system
-- [ ] Analytics and tracking
+- [ ] **AWS Deployment**
+  - [ ] Set up RDS PostgreSQL instance
+  - [ ] Deploy Next.js app to ECS or Lambda
+  - [ ] Configure VPC, security groups
+  - [ ] Test end-to-end flow
 
-**Phase 5: Advanced Features**
-- [ ] Career Roadmap with milestones
-- [ ] Business Roadmap with milestones
-- [ ] Community features
-- [ ] Case studies and testimonials
-- [ ] SEO optimization
+**Deliverable:** Users can generate personalized 90-day roadmaps with weekly milestones.
+
+---
+
+### 🚀 Phase 2: Accountability Engine (Weeks 3-4)
+
+**Goals:** Build progress tracking, notifications, streaks, and rewards
+
+- [ ] **Milestone Tracking**
+  - [ ] Prisma schema updates for milestones, progress
+  - [ ] UI: Kanban-style milestone view (drag-to-complete)
+  - [ ] Proof upload: S3 integration for screenshots/links
+  - [ ] Completion logic: update points, badges, streak
+
+- [ ] **Notification System**
+  - [ ] EventBridge rules for scheduled notifications:
+    - Daily (9 AM): "What's your one action today?"
+    - Milestone due (3 days before)
+    - Inactivity (7 days)
+    - Streak recovery (1 day away from milestone)
+  - [ ] Lambda function to process events
+  - [ ] SNS (SMS) + SES (Email) integration
+  - [ ] Notification preferences UI
+
+- [ ] **Streak Tracking**
+  - [ ] EventBridge daily check (9 AM UTC)
+  - [ ] Compare last activity timestamp
+  - [ ] Increment/reset streak logic
+  - [ ] Streak visualization in dashboard
+
+- [ ] **Reward System**
+  - [ ] Points calculation (milestone completion, course completion, streak)
+  - [ ] Badge definitions (JSON schema)
+  - [ ] Award logic in Prisma
+  - [ ] Rewards display in dashboard
+
+- [ ] **AI Coaching Check-ins**
+  - [ ] EventBridge weekly trigger
+  - [ ] Bedrock prompt: analyze completed milestones, blockers
+  - [ ] Generate reflective questions
+  - [ ] Store check-ins in PostgreSQL
+  - [ ] Display in dashboard with response form
+
+**Deliverable:** Users can track progress, get adaptive reminders, earn rewards, and receive AI coaching.
+
+---
+
+### 📚 Phase 3: Learning Integration (Weeks 5-6)
+
+**Goals:** Curate courses, link to milestones, track completion
+
+- [ ] **Course Database**
+  - [ ] Scrape/API integration for Coursera, Udemy, YouTube
+  - [ ] Prisma schema for Course model
+  - [ ] Manual curation for high-quality courses
+  - [ ] Store in PostgreSQL + sync to Knowledge Base
+
+- [ ] **Course Linking**
+  - [ ] Bedrock Agent queries KB to match courses to milestones
+  - [ ] Display course cards in roadmap view
+  - [ ] Link courses to specific milestones
+  - [ ] Track course clicks in PostgreSQL
+
+- [ ] **Progress Tracking**
+  - [ ] UserCourseProgress model (status: NOT_STARTED, IN_PROGRESS, COMPLETED)
+  - [ ] UI to mark course completion
+  - [ ] Update milestone progress when course completed
+  - [ ] Course completion contributes to points/badges
+
+- [ ] **Learning Path Visualization**
+  - [ ] Skill tree graph (D3.js or React Flow)
+  - [ ] Show dependencies between skills
+  - [ ] Highlight completed vs pending
+
+**Deliverable:** Users get curated course recommendations linked to their roadmap and can track learning progress.
+
+---
+
+### 💼 Phase 4: Job Marketplace MVP (Weeks 7-8)
+
+**Goals:** Launch two-sided job board with AI-powered matching
+
+- [ ] **Job Board Schema**
+  - [ ] Prisma models: Job, JobApplication, JobMatch
+  - [ ] Job posting UI for businesses (form with validation)
+  - [ ] Stripe integration for job posting payments
+
+- [ ] **Job Search & Discovery**
+  - [ ] Job listing page with filters (niche, skills, location, remote)
+  - [ ] Search functionality (Algolia or PostgreSQL full-text)
+  - [ ] Job detail page
+
+- [ ] **Smart Matching**
+  - [ ] Bedrock analyzes job description vs user persona
+  - [ ] Generate fit score (0-100) with reasoning
+  - [ ] Display recommended jobs in dashboard
+  - [ ] "Jobs for You" section based on career direction
+
+- [ ] **Application Workflow**
+  - [ ] Bedrock generates cover letter from user's "Why You" story
+  - [ ] User can edit AI-generated cover letter
+  - [ ] Upload resume to S3
+  - [ ] Submit application
+  - [ ] Track application status (APPLIED, INTERVIEWING, REJECTED, ACCEPTED)
+
+- [ ] **Business Dashboard**
+  - [ ] View posted jobs
+  - [ ] Search candidates by flow-state alignment
+  - [ ] Review applications
+  - [ ] Candidate fit scores
+
+**Deliverable:** Functional job marketplace where users find aligned opportunities and businesses find mission-driven candidates.
+
+---
+
+### 🎨 Phase 5: Polish & Launch (Weeks 9-12)
+
+**Goals:** Refine UX, add analytics, launch to 100 beta users
+
+- [ ] **UI/UX Improvements**
+  - [ ] Mobile-responsive design for all pages
+  - [ ] Result display pages (replace JSON with beautiful components)
+  - [ ] Onboarding flow with milestone setup wizard
+  - [ ] Dashboard redesign (overview, roadmap, jobs, progress)
+
+- [ ] **Analytics & Monitoring**
+  - [ ] CloudWatch custom metrics:
+    - Milestone completion rate
+    - Streak distribution
+    - Job application conversion
+    - User retention (weekly return rate)
+  - [ ] PostHog integration for product analytics
+  - [ ] Funnel analysis (discovery → roadmap → milestone completion)
+
+- [ ] **Email Campaigns**
+  - [ ] Welcome email sequence (SES)
+  - [ ] Weekly digest with progress summary
+  - [ ] Re-engagement for inactive users (7 days, 14 days, 30 days)
+  - [ ] Milestone celebration emails
+
+- [ ] **Soft Launch**
+  - [ ] Recruit 100 beta users (LinkedIn, Reddit, Indie Hackers)
+  - [ ] Early-bird pricing ($10/mo for first 100 users)
+  - [ ] Collect feedback via in-app surveys
+  - [ ] Iterate on AI quality (prompt tuning)
+  - [ ] Test notification timing (A/B test)
+
+- [ ] **Documentation**
+  - [ ] User guide for roadmap creation
+  - [ ] Video walkthrough of key features
+  - [ ] FAQ page
+  - [ ] Business guide for posting jobs
+
+**Deliverable:** Polished product ready for wider launch with 100 active users and validated engagement metrics.
+
+---
+
+### 📊 Success Metrics
+
+| Metric                          | Target         | Measurement           |
+| ------------------------------- | -------------- | --------------------- |
+| Milestone completion rate       | 70% (≥3 in 30d) | CloudWatch + Prisma   |
+| Weekly user return rate         | 50%            | PostHog cohort analysis|
+| Free → Paid conversion          | 15%            | Stripe webhooks       |
+| Job marketplace usage           | 20 postings    | PostgreSQL count      |
+| Job application conversion      | 100 apps       | PostgreSQL count      |
+| AI roadmap quality              | <5% manual fix | User feedback         |
+| Notification open rate          | 40%            | NotificationLog table |
+| Course completion contribution  | 30% of milestones | UserCourseProgress |
+
+---
+
+### 🎯 Post-Challenge Roadmap (Weeks 13+)
+
+- [ ] Advanced market validation (TAM/SAM/SOM with Perplexity API)
+- [ ] Community features (forums, peer accountability groups)
+- [ ] Mobile app (React Native)
+- [ ] Enterprise features (team accounts, admin controls)
+- [ ] Referral program with rewards
+- [ ] SEO optimization and content marketing
+- [ ] Partnerships with course providers (affiliate revenue)
+- [ ] Advanced analytics dashboard (Tableau/QuickSight)
+
+---
+
+## Social Impact & Value Creation
+
+### How We Solve the Execution Gap
+
+**The Problem:** 80% of people who discover their "purpose" never act on it because they lack:
+1. **Daily Structure** - No clear "what to do today"
+2. **Accountability** - Motivation fades without external pressure
+3. **Learning Guidance** - Overwhelmed by course options
+4. **Proof of Progress** - Can't see if they're getting closer
+5. **Economic Opportunity** - No bridge to jobs/clients
+
+**Our Solution:**
+
+| Execution Gap                | Traditional Approach       | Our Approach                                  |
+| ---------------------------- | -------------------------- | --------------------------------------------- |
+| "What do I do today?"        | Generic advice             | Daily prompts based on roadmap milestones     |
+| "I lost motivation"          | Self-discipline            | Streaks, rewards, AI check-ins                |
+| "Which course should I take?"| Search Coursera yourself   | Curated courses linked to specific milestones |
+| "Am I making progress?"      | Gut feeling                | Milestone tracking, points, badges            |
+| "Where do I find jobs?"      | Generic job boards         | Jobs matched to your flow-state alignment     |
+
+### Economic Empowerment
+
+1. **For Aspiring Entrepreneurs:**
+   - Reduces time to first customer (from 18 months to 90 days with roadmap)
+   - Provides daily actions, not vague strategies
+   - Links to resources without expensive coaching ($200-500/session)
+
+2. **For Career Switchers:**
+   - Systematically builds portfolio through milestone projects
+   - Connects to job opportunities aligned with strengths
+   - Tracks skill development with clear progression
+
+3. **For Businesses:**
+   - Finds candidates aligned with mission, not just qualified on paper
+   - Reduces mis-hires and turnover (flow-state fit > resume fit)
+   - Access to self-aware, motivated talent pipeline
+
+### Accessibility
+
+- **Democratizes Coaching:** Free discovery tier (worth $500 with human coach)
+- **Affordable Execution Support:** $15/mo vs $200-500/session for coaching
+- **Free Learning Resources:** Links to free/affordable courses
+- **No Geographic Barriers:** Remote job marketplace
+
+### Behavior Change at Scale
+
+**Traditional career coaching:** 1:1, high-touch, doesn't scale ($200-500/session, 100 clients max per coach)
+
+**Our platform:**
+- AI coaching check-ins provide personalized guidance at scale
+- EventBridge schedules adaptive reminders (not generic)
+- Reward system gamifies habit formation
+- Community features (future) provide peer accountability
+
+**Target:** 70% of users complete ≥3 milestones in first 30 days (vs. industry standard of 15% for self-paced programs)
+
+### Why AWS Makes This Possible
+
+| Feature                  | AWS Service       | Impact on Users                               |
+| ------------------------ | ----------------- | --------------------------------------------- |
+| Personalized roadmaps    | Bedrock Agents    | Autonomous plan creation without manual work  |
+| Smart notifications      | EventBridge       | Adaptive reminders based on user behavior     |
+| AI coaching at scale     | Bedrock + Lambda  | Reflective questions without human coaches    |
+| Course recommendations   | Knowledge Bases   | Semantic search matches courses to milestones |
+| Job matching             | Bedrock           | Analyzes fit beyond keyword matching          |
+| Reliable delivery        | SNS/SES           | Multi-channel notifications (email, SMS)      |
 
 ---
 
@@ -902,9 +1320,59 @@ As part of SmartAlgorhythm ecosystem, create vibecoded apps:
 
 ---
 
+---
+
+## AWS Challenge Application Summary
+
+### One-Sentence Pitch
+"We help people discover their ideal business niche or career direction by analyzing what gets them into flow state, their passions, and life experiences using AI, then transform that insight into an action plan with learning paths, milestone tracking, accountability rewards, and job matching - taking them from confusion to their first win."
+
+### What We're Building (12 Weeks)
+
+**Four Integrated Modules:**
+
+1. **AI-Powered Discovery (Free)** - AWS Bedrock analyzes 12 deep questions to generate niche/career direction
+2. **Intelligent Roadmap Generation (Free/Freemium)** - Bedrock Agents create personalized 90-day plans with weekly milestones
+3. **Accountability & Progress Tracking (Core Platform)** - EventBridge schedules adaptive reminders, S3 stores milestone proofs, rewards gamify progress
+4. **Two-Sided Job Marketplace** - Bedrock matches users to jobs by flow-state alignment, generates AI cover letters
+
+### AWS Services Showcase
+
+| Service          | Use Case                                      | Complexity      |
+| ---------------- | --------------------------------------------- | --------------- |
+| Bedrock (Claude) | Discovery analysis, AI coaching, job matching | High            |
+| Bedrock Agents   | Autonomous roadmap generation                 | High            |
+| Knowledge Bases  | Course catalogs, skill frameworks, job data   | Medium          |
+| EventBridge      | Streak tracking, milestone reminders          | Medium          |
+| SNS/SES          | Multi-channel notifications                   | Low             |
+| S3               | Milestone proofs, resumes, documents          | Low             |
+| RDS PostgreSQL   | User data, progress, milestones               | Medium          |
+| CloudWatch       | Custom metrics, dashboards                    | Low-Medium      |
+| ECS/Lambda       | Next.js app hosting                           | Medium          |
+
+### Social Impact
+
+- **Solves the execution gap:** 80% of people with clarity never act - we provide daily structure and accountability
+- **Democratizes career coaching:** $15/mo vs $200-500/session
+- **Better hiring outcomes:** Matches by flow-state alignment, not just resumes
+- **Target:** 70% complete ≥3 milestones in 30 days (vs 15% industry standard)
+
+### Early Traction
+
+- 25 users completed discovery (free tier live)
+- Ready to test accountability hypothesis with AWS Bedrock migration
+- Validated discovery framework, now building execution layer
+
+### Why This Matters
+
+Career transitions fail not from lack of insight, but from lack of execution. We're building the first platform that turns AI-powered discovery into behavior change through accountability, learning integration, and economic opportunity - all powered by AWS.
+
+---
+
 ## Document Version
 
-- **Version:** 1.0
-- **Last Updated:** December 30, 2025
+- **Version:** 2.0 (Expanded Vision - Career Transformation Platform)
+- **Last Updated:** January 20, 2026
 - **Author:** Shashank B R
-- **Product:** SmartAlgorhythm - Idea Generator & Validator
+- **Product:** SmartAlgorhythm - Career Transformation Platform
+- **Challenge:** AWS Generative AI Challenge (12-week timeline)
