@@ -115,7 +115,7 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
             </div>
             <div className="flex flex-col">
               <h3 className="text-xs font-medium text-slate-600">
-                by Smart Algorhythm
+                by Better Trajectory
               </h3>
             </div>
           </div>

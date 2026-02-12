@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import { TermsContent } from "@/components/legal/terms-content";
 
 export const metadata: Metadata = {
-  title: "Terms and Conditions | Find your Niche by Smart Algorhythm",
-  description: "Terms and Conditions for using Find your Niche by Smart Algorhythm",
+  title: "Terms and Conditions | Find your Niche by Better Trajectory",
+  description: "Terms and Conditions for using Find your Niche by Better Trajectory",
 };
 
 export default function TermsPage() {

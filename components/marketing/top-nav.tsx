@@ -23,7 +23,7 @@ export function TopNav({
           </div>
           <div className="text-sm font-semibold tracking-tight text-slate-900">
             <span className="hidden text-slate-500 sm:inline">
-              by SmartAlgorhythm
+              by Better Trajectory
             </span>
           </div>
         </Link>

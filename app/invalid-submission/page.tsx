@@ -38,7 +38,7 @@ export default function InvalidSubmissionPage() {
 
         <p className="text-zinc-600 mb-8 leading-relaxed font-medium">
           If you think this is a mistake, please email us at{" "}
-          <span className="text-blue-700">support@smartalgorhythm.com</span>{" "}
+          <span className="text-blue-700">support@bettertrajectory.com</span>{" "}
           using your registered email and we&quot;ll look into it.
         </p>
 

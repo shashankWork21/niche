@@ -25,7 +25,7 @@ export function MarketingFooter() {
               </div>
               <div>
                 <div className="text-xl font-bold tracking-tight text-blue-950">
-                  SmartAlgorhythm
+                  Better Trajectory
                 </div>
                 <div className="text-xs font-medium tracking-wide text-blue-700">
                   Idea Generator & Validator
@@ -141,10 +141,10 @@ export function MarketingFooter() {
         <div className="flex flex-col items-start justify-between gap-6 pt-8 sm:flex-row sm:items-center">
           <div className="space-y-1">
             <p className="text-sm font-medium text-blue-900">
-              © {new Date().getFullYear()} SmartAlgorhythm. All rights reserved.
+              © {new Date().getFullYear()} Better Trajectory. All rights reserved.
             </p>
             <p className="text-xs text-blue-700">
-              Part of the SmartAlgorhythm ecosystem of micro-tools for founders.
+              Part of the Better Trajectory ecosystem of micro-tools for founders.
             </p>
           </div>
 

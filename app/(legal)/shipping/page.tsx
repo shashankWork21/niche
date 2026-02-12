@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Shipping Policy | Find your Niche by Smart Algorhythm",
-  description: "Shipping Policy for Find your Niche by Smart Algorhythm",
+  title: "Shipping Policy | Find your Niche by Better Trajectory",
+  description: "Shipping Policy for Find your Niche by Better Trajectory",
 };
 
 export default function ShippingPolicyPage() {
@@ -16,7 +16,7 @@ export default function ShippingPolicyPage() {
         <section>
           <h2>1. Digital Delivery Only</h2>
           <p>
-            Find your Niche by Smart Algorhythm is a digital service. We do not ship any physical
+            Find your Niche by Better Trajectory is a digital service. We do not ship any physical
             goods.
           </p>
         </section>
@@ -58,10 +58,10 @@ export default function ShippingPolicyPage() {
           <p>
             Email:{" "}
             <a
-              href="mailto:support@smartalgorhythm.com"
+              href="mailto:support@bettertrajectory.com"
               className="text-blue-600 hover:underline dark:text-blue-400"
             >
-              support@smartalgorhythm.com
+              support@bettertrajectory.com
             </a>
           </p>
         </section>

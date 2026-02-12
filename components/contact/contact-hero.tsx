@@ -10,7 +10,7 @@ export function ContactHero() {
           <span className="text-blue-700">Conversation</span>
         </h1>
         <p className="mt-5 text-lg leading-relaxed text-slate-600">
-          Have questions about SmartAlgorhythm? We&apos;re here to help you
+          Have questions about Better Trajectory? We&apos;re here to help you
           succeed. Reach out and let&apos;s discuss how we can transform your
           business.
         </p>
