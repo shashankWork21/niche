@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Refund Policy | Find your Niche by Better Trajectory",
-  description: "Refund Policy for Find your Niche by Better Trajectory",
+  title: "Refund Policy | Find your Niche by Smart Algorhythm",
+  description: "Refund Policy for Find your Niche by Smart Algorhythm",
 };
 
 export default function CancellationPage() {
@@ -16,7 +16,7 @@ export default function CancellationPage() {
         <section>
           <h2>1. Overview</h2>
           <p>
-            Find your Niche by Better Trajectory offers one-time purchase products. We do not offer
+            Find your Niche by Smart Algorhythm offers one-time purchase products. We do not offer
             subscription-based services. All purchases are single transactions
             for specific products or services.
           </p>
@@ -86,10 +86,10 @@ export default function CancellationPage() {
           <p>
             To request a refund, please email{" "}
             <a
-              href="mailto:support@bettertrajectory.com"
+              href="mailto:support@smartalgorhythm.com"
               className="text-blue-600 hover:underline dark:text-blue-400"
             >
-              support@bettertrajectory.com
+              support@smartalgorhythm.com
             </a>{" "}
             within 3 days of receiving your deliverable with:
           </p>
@@ -166,10 +166,10 @@ export default function CancellationPage() {
           <p>
             Email:{" "}
             <a
-              href="mailto:support@bettertrajectory.com"
+              href="mailto:support@smartalgorhythm.com"
               className="text-blue-600 hover:underline dark:text-blue-400"
             >
-              support@bettertrajectory.com
+              support@smartalgorhythm.com
             </a>
           </p>
         </section>

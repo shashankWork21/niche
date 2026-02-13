@@ -12,10 +12,10 @@ export function ContactInfoPanel() {
           iconClassName="bg-blue-50 text-blue-700"
         >
           <a
-            href="mailto:support@bettertrajectory.com"
+            href="mailto:support@smartalgorhythm.com"
             className="inline-block font-semibold text-blue-700 hover:text-blue-900 hover:underline underline-offset-2"
           >
-            support@bettertrajectory.com
+            support@smartalgorhythm.com
           </a>
         </ContactInfoCard>
 

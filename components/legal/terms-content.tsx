@@ -17,7 +17,7 @@ export function TermsContent({
       <section>
         <h2>1. Acceptance of Terms</h2>
         <p>
-          By accessing or using Find your Niche by Better Trajectory (&quot;the Service&quot;), you
+          By accessing or using Find your Niche by Smart Algorhythm (&quot;the Service&quot;), you
           agree to be bound by these Terms and Conditions. If you do not agree
           to these terms, please do not use the Service.
         </p>
@@ -26,7 +26,7 @@ export function TermsContent({
       <section>
         <h2>2. Description of Service</h2>
         <p>
-          Find your Niche by Better Trajectory provides tools and features to search, analyze, and
+          Find your Niche by Smart Algorhythm provides tools and features to search, analyze, and
           extract publicly available information from Y Combinator&apos;s
           startup database. The Service is offered under various subscription
           plans, including a free tier with limited functionality.
@@ -155,10 +155,10 @@ export function TermsContent({
         <p>
           If you have any questions about these Terms, please contact us at{" "}
           <a
-            href="mailto:support@bettertrajectory.com"
+            href="mailto:support@smartalgorhythm.com"
             className="text-blue-600 hover:underline dark:text-blue-400"
           >
-            support@bettertrajectory.com
+            support@smartalgorhythm.com
           </a>
           .
         </p>

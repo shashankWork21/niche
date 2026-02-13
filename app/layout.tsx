@@ -4,7 +4,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  title: "Find your Niche by Better Trajectory",
+  title: "Find your Niche by Smart Algorhythm",
   description:
     "Find your ideal niche or career direction with AI-powered insights",
 };

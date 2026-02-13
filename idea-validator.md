@@ -6,7 +6,7 @@ A comprehensive career transformation platform that helps people discover their 
 
 **Vision:** "We don't just generate advice - we create behavior change through execution and accountability."
 
-**Part of:** Better Trajectory ecosystem
+**Part of:** SmartAlgorhythm ecosystem
 **Target Timeline:** 12 weeks (AWS Challenge optimized)
 **Early Traction:** 25 users completed discovery, ready for accountability testing
 **Tech Stack:** AWS Bedrock (Claude 3.5 Sonnet, Agents), Knowledge Bases, Next.js, RDS PostgreSQL, EventBridge, SNS/SES, S3
@@ -1186,7 +1186,7 @@ NotificationLog ← NEW
 
 ### Content Strategy (15 Micro-Tools)
 
-As part of Better Trajectory ecosystem, create vibecoded apps:
+As part of SmartAlgorhythm ecosystem, create vibecoded apps:
 
 - Niche Statement Generator (this product)
 - Offer Statement Builder
@@ -1374,5 +1374,5 @@ Career transitions fail not from lack of insight, but from lack of execution. We
 - **Version:** 2.0 (Expanded Vision - Career Transformation Platform)
 - **Last Updated:** January 20, 2026
 - **Author:** Shashank B R
-- **Product:** Better Trajectory - Career Transformation Platform
+- **Product:** SmartAlgorhythm - Career Transformation Platform
 - **Challenge:** AWS Generative AI Challenge (12-week timeline)

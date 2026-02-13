@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Find your Niche by Better Trajectory",
-  description: "Privacy Policy for Find your Niche by Better Trajectory",
+  title: "Privacy Policy | Find your Niche by Smart Algorhythm",
+  description: "Privacy Policy for Find your Niche by Smart Algorhythm",
 };
 
 export default function PrivacyPage() {
@@ -16,7 +16,7 @@ export default function PrivacyPage() {
         <section>
           <h2>1. Introduction</h2>
           <p>
-            At Find your Niche by Better Trajectory, we are committed to protecting your privacy and
+            At Find your Niche by Smart Algorhythm, we are committed to protecting your privacy and
             ensuring the security of your personal information. This Privacy
             Policy explains how we collect, use, disclose, and safeguard your
             information when you use our Service.
@@ -213,10 +213,10 @@ export default function PrivacyPage() {
           <p>
             Email:{" "}
             <a
-              href="mailto:support@bettertrajectory.com"
+              href="mailto:support@smartalgorhythm.com"
               className="text-blue-600 hover:underline dark:text-blue-400"
             >
-              support@bettertrajectory.com
+              support@smartalgorhythm.com
             </a>
           </p>
         </section>
